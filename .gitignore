@@ -1,0 +1,22 @@
+#You must exclude everything on the way to the destinations, but you must include the destinations:
+
+/*
+
+
+!/.gitignore
+
+!/application
+/application/*
+!/application/views
+/application/views/*
+!/application/views/updesk/
+#!/application/views/updesk/*
+
+
+!/out
+/out/*
+!/out/updesk
+/out/updesk/node_modules
+
+
+

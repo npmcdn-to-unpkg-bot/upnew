@@ -1,0 +1,58 @@
+@line-thickness: 4px;
+@line-spacing: 8px;
+@color: black;
+@width: 24px;
+@fancy-rotation: 2; // 0 off, 1-x roation
+@transition-speed: 400ms;
+
+.wrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+
+.hamburger {
+  height: @line-spacing * 2;
+  width: @width;
+  cursor: pointer;
+  position: absolute;
+  top:@line-thickness;
+
+
+
+  .line {
+    position: absolute;
+    width: @width;
+    height: @line-thickness;
+    background: @color;
+    transition: all @transition-speed;
+    top: @line-thickness;
+    &:after, &:before {
+      content: "";
+      height: @line-thickness;
+      width: @width;
+      background: @color;
+      position: absolute;
+      transition: all @transition-speed;
+    }
+    &:after {
+      top: @line-spacing;
+    }
+    &:before {
+      top: @line-spacing * -1;
+    }
+  }
+
+  .line.close-state {
+    background: rgba(255, 255, 255, 0);
+    .rotation(90deg * @fancy-rotation);
+    &:before {
+      top: 0px;
+      .rotation(45deg);
+    }
+    &:after {
+      top: 0px;
+      .rotation(-45deg);
+    }
+  }
+}

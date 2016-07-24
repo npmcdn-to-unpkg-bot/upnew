@@ -1,0 +1,41 @@
+.cart-ico {
+  @size:28px; // change this var 
+  
+  height: @size;
+  width: @size;
+  padding-top: @size / 4;
+  position: relative;
+  .bag {
+    height: 100%;
+    width: 100%;
+    background: black;
+    //-webkit-clip-path: polygon(100% 0, 90% 100%, 10% 100%, 0 0);
+    //clip-path: polygon(100% 0, 90% 100%, 10% 100%, 0 0);
+    position: relative;
+    &:before {
+      height: 50%;
+      width: 40%;
+      margin-left: auto;
+      margin-right: auto;
+      left: 0;
+      right: 0;
+      top: -25%;
+      border-radius: 50%;
+      border: @size / 10 solid black;
+      content: "";
+      position: absolute;
+    }
+  }
+  .counter {
+    position: absolute;
+    color: white;
+    text-align: center;
+    font-size: @size / 2;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 30%;
+  }
+}
+

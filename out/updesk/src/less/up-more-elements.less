@@ -1,0 +1,29 @@
+.translate3d (@x, @y: 0, @z: 0) {
+	-webkit-transform:       translate3d(@x, @y, @z);
+	-moz-transform: 	 translate3d(@x, @y, @z);
+	-ms-transform: 		 translate3d(@x, @y, @z);
+	-o-transform: 		 translate3d(@x, @y, @z);
+}
+
+.gradient-image(@color: #F5F5F5, @start: #EEE, @stop: #FFF) {
+  background: @color;
+  background-image: -webkit-gradient(linear,
+                               left bottom,
+                               left top,
+                               color-stop(0, @start),
+                               color-stop(1, @stop));
+  background-image: -ms-linear-gradient(bottom,
+                                  @start,
+                                  @stop);
+  background-image: -moz-linear-gradient(center bottom,
+                                   @start 0%,
+                                   @stop 100%);
+  background-image: -o-linear-gradient(@stop,
+                                 @start);
+  filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@stop,@start));
+}
+.text-overflow-ellipsis() {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

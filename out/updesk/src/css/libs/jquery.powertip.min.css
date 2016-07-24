@@ -1,0 +1,57 @@
+#powerTip{
+  max-width: 220px;
+  cursor: default;
+  background-color: white;
+  
+  border-radius: 3px;
+
+  
+  display: none;
+  padding: 15px;
+  position: absolute;
+  /*white-space: nowrap;*/
+  z-index: 2147483647;
+  /*border: 2px solid #ccc;
+  font-style: italic;*/
+    color: black;
+  font-size: 10px;
+  font-weight:bold;
+ letter-spacing: 1px;
+  
+  border:1px solid #e0e0e0;
+
+  -webkit-box-shadow: 0 0 10px 0 rgba(0,0,0,.15);-moz-box-shadow: 0 0 10px 0 rgba(0,0,0,.15);box-shadow: 0 0 10px 0 rgba(0,0,0,.15);
+  
+  }
+  
+#powerTip:beforeOFF {
+  content: '';
+    width: 0; 
+	height: 0; 
+
+	border-bottom: 10px solid transparent;  /* left arrow slant */
+	border-top: 10px solid transparent; /* right arrow slant */
+	border-right: 10px solid white; /* bottom, add background color here */
+
+	font-size: 0;
+	line-height: 0;
+	position:absolute;
+	top:25%;
+	left:-10px;
+}
+#powerTip div{
+    padding-bottom:3px;
+    text-align:left;
+}
+#powerTip i {
+  /* border: 1px solid white; */
+  width: 40px;
+  display: block;
+  background-color: #eee;
+  margin: 1px;
+  font-style: normal;
+  padding: 3px 0;
+  float: left;
+  text-align: center;
+  border-radius:3px;
+}

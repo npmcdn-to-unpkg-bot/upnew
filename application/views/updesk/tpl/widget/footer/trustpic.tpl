@@ -1,0 +1,1 @@
+<img class="trustpic" alt="urbanpeople.com" src="[{$oViewConf->getImageUrl()}]footer/[{ $oView->getTrustedPic() }]">

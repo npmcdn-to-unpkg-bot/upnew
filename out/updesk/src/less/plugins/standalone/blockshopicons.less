@@ -1,0 +1,126 @@
+//
+// Glyphicons
+// -----------------------------------------------------------------------------
+
+// About
+//
+// Glyphicons font-based icons require you to include all relevant font files,
+// found in the Bootstrap repo under /fonts/. Files are referenced relative to
+// the compiled CSS.
+//
+// Basic usage
+//
+// Since icons are fonts, they can be placed anywhere text is placed. To use,
+// create an inline element with the appropriate classes, like so:
+//
+// <a href="#"><span class="glyphicon glyphicon-star"></span> Star</a>
+//
+// Use them in links, buttons, headings, and more.
+
+
+@blockshop-font-path:          "../fonts";
+
+
+@font-face { font-family: 'blockshop-icons';
+src: url('@{blockshop-font-path}/blockshop-icons.eot'); 
+src: url('@{blockshop-font-path}/blockshop-icons.eot?#iefix') format("embedded-opentype"), 
+     url('@{blockshop-font-path}/blockshop-icons.woff') format("woff"),
+     url('@{blockshop-font-path}/blockshop-icons.ttf') format("truetype"),
+     url('@{blockshop-font-path}/blockshop-icons.svg#blockshop_icons') format("svg");
+     font-weight: normal;
+     font-style: normal;
+    
+}
+
+
+// Catchall baseclass
+.bl:before {
+    font-family: 'blockshop-icons';
+    speak: none; font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    
+}
+
+.bl.bl-x:before{ content: "×"; }
+//×
+.bl.bl-arrow-right:before { content: "\e600"; }
+
+.bl.bl-arrow-left:before { content: "\e601"; }
+
+.bl.bl-zoom-in:before { content: "\e602"; }
+
+.bl.bl-zoom-out:before { content: "\e603"; }
+
+.bl.bl-radio-checked:before { content: "\e605"; }
+
+.bl.bl-radio-unchecked:before { content: "\e606"; }
+
+.bl.bl-feed:before { content: "\e60a"; }
+
+.bl.bl-youtube:before { content: "\e60d"; }
+
+.bl.bl-soundcloud:before { content: "\e607"; }
+
+.bl.bl-menu:before { content: "\e626"; }
+
+.bl.bl-minus:before { content: "\e616"; }
+
+.bl.bl-plus:before { content: "\e617"; }
+
+.bl.bl-cross:before { content: "\e618"; }
+
+.bl.bl-arrow-down:before { content: "\e619"; }
+
+.bl.bl-slider-left:before { content: "\e61a"; }
+
+.bl.bl-slider-right:before { content: "\e61b"; }
+
+.bl.bl-arrow-dropdown:before { content: "\e61c"; }
+
+.bl.bl-list:before { content: "\e61d"; }
+
+.bl.bl-tumblr:before { content: "\e61e"; }
+
+.bl.bl-pinterest:before { content: "\e61f"; }
+
+.bl.bl-facebook:before { content: "\e620"; }
+
+.bl.bl-twitter:before { content: "\e621"; }
+
+.bl.bl-vimeo:before { content: "\e622"; }
+
+.bl.bl-googleplus:before { content: "\e623"; }
+
+.bl.bl-linkedin:before { content: "\e624"; }
+
+.bl.bl-instagram:before { content: "\e625"; }
+
+.bl.bl-visa:before { content: "\e604"; }
+
+.bl.bl-googlewallet:before { content: "\e608"; }
+
+.bl.bl-discover:before { content: "\e609"; }
+
+.bl.bl-paypal:before { content: "\e60b"; }
+
+.bl.bl-diners:before { content: "\e60e"; }
+
+.bl.bl-switch:before { content: "\e610"; }
+
+.bl.bl-stripe:before { content: "\e611"; }
+
+.bl.bl-moneybookers:before { content: "\e615"; }
+
+.bl.bl-amex:before { content: "\e627"; }
+
+.bl.bl-mastercard:before { content: "\e60c"; }
+
+.bl.bl-account:before { content: "\e60f"; }
+
+.bl.bl-search:before { content: "\e628"; }
+
+.bl.bl-cart:before { content: "\e629"; }
