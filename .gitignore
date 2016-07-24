@@ -19,5 +19,10 @@
 /out/updesk/node_modules
 /out/updesk/src/css/*.css
 
+!/modules
+/modules/*
+!/modules/uppl/
+
+/modules/uppl/_archive
 
 

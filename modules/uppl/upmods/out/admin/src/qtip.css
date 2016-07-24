@@ -1,0 +1,19 @@
+ #qTip {
+ padding: 5px;
+ -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 5px;
+ display: none;
+ background:black;
+ color: white;
+ font: bold 9px Verdana, Arial, sans-serif;
+ text-align: left;
+ position: absolute;
+ z-index: 1000;
+ border-radius:5px;
+ -moz-border-radius:5px;
+ 
+}
+
+.qtip_parent{
+	cursor:pointer;
+}
+				

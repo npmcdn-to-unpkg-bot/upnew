@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OX>
+  <OXMENU id="KMUdo1">
+    <MAINMENU id="KMUDO_MODUL1">
+        <SUBMENU cl="upfinancestatsfinanceoverview" id="financestats" rights="malladmin" />
+    </MAINMENU>
+  </OXMENU>
+</OX>
