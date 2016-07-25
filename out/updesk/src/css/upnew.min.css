@@ -16,36 +16,6 @@
   .clearfix();
 }
 */
-.u-text--bold {
-  font-weight: bold;
-}
-.u-text--block {
-  display: block;
-}
-.u-text--center {
-  text-align: center;
-}
-.u-text--align-left {
-  text-align: left;
-}
-.u-text--align-right {
-  text-align: right;
-}
-.u-text--float-left {
-  float: left;
-}
-.u-text--float-right {
-  float: right;
-}
-.u-text--warning {
-  color: orange;
-}
-.u-text--danger {
-  color: red;
-}
-.u-text--success {
-  color: green;
-}
 .c-account-order,
 .border-box {
   border: 1px solid #eeeeee;
@@ -77,6 +47,103 @@
 }
 .border-box .list-group-item {
   overflow: hidden;
+}
+.u-1\/3 {
+  width: 33.33333333% !important;
+}
+.u-5\/12 {
+  width: 41.66666667% !important;
+}
+.u-7\/12 {
+  width: 58.33333333% !important;
+}
+.u-12\/12 {
+  width: 100% !important;
+}
+.c-esr .u-12\/12 {
+  border-bottom: 1px solid #000;
+  overflow: hidden;
+}
+.c-esr {
+  font-size: 14px;
+  line-height: 20px;
+  background: #fff0e1;
+  border: 1px solid #000;
+  width: 600px;
+  margin: 0 0 25px;
+}
+.c-esr__heading {
+  width: 100%;
+  overflow: hidden;
+  font-size: 11px;
+  line-height: 16px;
+}
+.c-esr__heading-item {
+  text-align: center;
+}
+.c-esr__borderbox {
+  float: left;
+  border-left: 1px solid #000;
+  display: table-cell;
+}
+.c-esr__borderbox--padded {
+  padding: 15px;
+}
+.c-esr__borderbox:first-child,
+.c-esr__borderbox:only-child {
+  border-left: none;
+}
+.c-esr__numberbox {
+  border: 3px solid #e68e00;
+  font-weight: bold;
+  padding: 3px;
+}
+.c-esr__caption {
+  font-size: 11px;
+  line-height: 17px;
+  color: #e68e00;
+}
+.c-esr__circle-wrapper {
+  width: 90px;
+  height: 90px;
+  padding: 8px;
+  margin: 0 auto;
+}
+.c-esr__circle {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #e68e00;
+  border-radius: 100%;
+}
+.u-text--bold {
+  font-weight: bold;
+}
+.u-text--block {
+  display: block;
+}
+.u-text--center {
+  text-align: center;
+}
+.u-text--align-left {
+  text-align: left;
+}
+.u-text--align-right {
+  text-align: right;
+}
+.u-text--float-left {
+  float: left;
+}
+.u-text--float-right {
+  float: right;
+}
+.u-text--warning {
+  color: orange;
+}
+.u-text--danger {
+  color: red;
+}
+.u-text--success {
+  color: green;
 }
 @font-face {
   font-family: 'blockshop-icons';
