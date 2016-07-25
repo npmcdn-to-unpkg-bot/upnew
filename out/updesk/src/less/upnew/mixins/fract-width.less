@@ -1,0 +1,7 @@
+.fract-width( @grid-columns) {
+  .for(@grid-columns); .-each(@i) {
+
+    &-@{i}\/@{grid-columns} {width: (@i/@grid-columns * 100%) !important}
+
+  }
+}
