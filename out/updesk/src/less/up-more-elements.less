@@ -27,3 +27,24 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+
+
+/* Apply clearfix on .parent
+.parent {
+  .clearfix();
+}
+*/
+
+// The clearfix mixin
+.clearfix() {
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}
+
+
