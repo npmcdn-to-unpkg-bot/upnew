@@ -52,7 +52,14 @@
   background: #fafafa;
   padding-bottom: 15px;
   margin-bottom: 30px;
-  overflow: hidden;
+}
+.c-account-order:after,
+.border-box:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
 }
 .c-account-order__ordernr {
   font-size: 16px;
