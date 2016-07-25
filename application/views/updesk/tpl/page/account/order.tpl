@@ -121,7 +121,64 @@
 		</div>
 	</div>
     <div class="col-xs-12">
-        esr hier
+
+
+    [{if $smarty.get.esr == 1 }]
+
+        <div class="c-esr payingslip esr">
+            <div class="c-esr__heading u-12/12">
+                <span class="c-esr__borderbox u-1/3 u-text--center">Einzahlung Giro</span>
+                <span class="c-esr__borderbox u-1/3 u-text--center">Versement Virement</span>
+                <span class="c-esr__borderbox u-1/3 u-text--center">Versamento Girata</span>
+            </div>
+            <div class="u-12/12">
+                <div class="c-esr__borderbox c-esr__borderbox--padded u-5/12">
+                    <div class="c-esr__caption">Einzahlung für/Versement pour/Versamento per</div>
+                    <div class="c-esr__address">
+                        <span class="u-text--block">Urbanpeople.com AG</span>
+                        <span class="u-text--block">Friedaustrasse 17</span>
+                        <span class="u-text--block">8003 Zürich</span>
+                    </div>
+                    <div class="c-esr__caption">Konto/Compte/Conto</div>
+                    <span class="u-text--block u-text--bold">01-36000-2</span>
+                    <div class="c-esr__numberbox c-esr__numberbox u-text--align-right">CHF 145.70</div>
+                    <div class="place-holder">&nbsp;</div>
+                </div>
+                <div class="c-esr__borderbox u-7/12">
+                    <div class="u-12/12">
+                        <div class="c-esr__borderbox c-esr__borderbox--padded u-7/12">
+                            <div class="c-esr__caption">
+                                <span>Bitte keine Mitteilungen anbringen</span> <span>Pas de communication s.v.p.</span> <span>Non aggiungete communicazioni p.f.</span>
+                            </div>
+                        </div>
+                        <div class="c-esr__borderbox u-5/12">
+                            <div class="c-esr__circle-wrapper">
+                                <div class="c-esr__circle"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="c-esr__borderbox c-esr__borderbox--padded">
+                            <div class="c-esr__caption">Referenz Nr./No de reference/No di riferimento</div>
+                            <div class="c-esr__numberbox">11 07567 00469 51838</div>
+                            <div class="c-esr__caption">Einbezahlt von/Verse par/Versato da</div>
+                            <div class="c-esr__address">
+                                <span class="u-text--block">Urbanpeople.com AG</span>
+                                <span class="u-text--block">Friedaustrasse 17</span>
+                                <span class="u-text--block">8003 Zürich</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    [{/if}]
+
+
+
+
+
+
     </div>
 
     <div class="col-xs-12">
