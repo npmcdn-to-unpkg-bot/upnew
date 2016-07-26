@@ -110,9 +110,11 @@
         [{oxscript add="$( '#toBasketForm' ).oxToBasket();"}]
         
         [{if $smarty.get.shoesize == 1 || 1==1 }]
-        <div class="shoesizeHIDDEN" style="display:none;">
+        <div class="shoesizeHIDDEN" style="">
             <span class="ShoeSizeMe"></span>
         </div>
+
+
         <script type="text/javascript"> (function(d, t, s, a, f) {
         	a = d.createElement(t);
         	f = d.getElementsByTagName(t)[0];
@@ -142,14 +144,17 @@
                     }).trigger("click");
                 }
 
+
             } 
             
             function ssm_add_to_cart(recommendation) {
             	$(".tocartselector_container").find('#toBasket').trigger("click");
             	ShoeSizeMe.close();
+                //ShoeSizeMe = null;
             }
 
-        </script> 
+
+        </script>
         
         [{/if}]
 
