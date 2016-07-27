@@ -109,7 +109,8 @@
         [{oxscript include="js/widgets/oxtobasket.js" priority=10 }]
         [{oxscript add="$( '#toBasketForm' ).oxToBasket();"}]
         
-        [{if $smarty.get.shoesize == 1 || 1==1 }]
+        [{if $smarty.get.shoesize == 1 }]
+        <!-- shoesize plugin excluded at the moment -->
         <div class="shoesizeHIDDEN" style="display:none;">
             <span class="ShoeSizeMe"></span>
         </div>

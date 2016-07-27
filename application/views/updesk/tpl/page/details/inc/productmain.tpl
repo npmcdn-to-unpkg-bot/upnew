@@ -175,9 +175,9 @@
      
         <div class="tocartselector_container">
             [{ oxid_include_widget cl="oxwArticleToCartSelector" _parent=$oView->getClassName() variantsID="#variants" toBasketFormID="#toBasketForm" nocookie=1 force_sid=$force_sid _navurlparams=$oViewConf->getNavUrlParams() anid=$oViewConf->getActArticleId() }]
-        </div> 
-        
-        [{if $smarty.get.shoesize == 1}]
+        </div>
+
+        [{* shoesizeme start *}]
         <div>
             <span class="ShoeSizeMe"></span>
         </div>
@@ -219,7 +219,7 @@
 
         </script> 
         
-        [{/if}]
+        [{* shoesizeme end *}]
         
         <div class="detail-section trustfield">
             <ul>[{oxcontent ident="updetailshoptrust" }]</ul>
