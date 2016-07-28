@@ -102,11 +102,6 @@ $aLang = array(
     'PROFITY_BODY'   => 'Als Dankeschön für Ihre geschätzte Bestellung schenken wir Ihnen einen Gutschein nach Wahl von unseren Partnershops.',
     'PROFITY_CTA'   => 'Jetzt Geschenk abholen',
 
-
-
-
-
-
 );
 
 /*

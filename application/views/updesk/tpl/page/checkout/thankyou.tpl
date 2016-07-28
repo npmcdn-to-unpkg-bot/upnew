@@ -46,9 +46,18 @@
             [{/block}]
 
             [{ assign var="aVouchers" value=$order->getVoucherNrList() }]
-            <img src="https://[{$oView->getActiveLangAbbr()}].profity.ch/imp/?s=211&amp;b=6&amp;lp=1&amp;ordervalue=[{ $order->getFormattedTotalOrderSum() }]&amp;ordernumber=[{ $order->oxorder__oxordernr->value }]&amp;vouchercode=[{ $aVouchers.0}] ">
+            <img src="https://[{$oView->getActiveLangAbbr()}].profity.ch/imp/?s=211&amp;b=6&amp;lp=1&amp;ordervalue=[{ $order->getFormattedTotalOrderSum() }]&amp;ordernumber=[{ $order->oxorder__oxordernr->value }]&amp;vouchercode=[{ $aVouchers.0}]">
+            <div class="o-flag">
+                <a href="https://[{$oView->getActiveLangAbbr()}].profity.ch/clk/?lpk=1036686A0E089B9C7736A07FABDDFC7D3096476C" target="_blank" class="o-flag__image">
+                    <img src="[{$oViewConf->getImageUrl('thankyou_profity_box.png')}]" alt="Profity Geschenk" width="120" />
+                </a>
+                <div class="o-flag__body">
+                    <p class="u-text--bold">[{oxmultilang ident="PROFITY_TITLE"}]</p>
+                    <p>[{oxmultilang ident="PROFITY_BODY"}]</p>
+                    <p><a class="btn btn-success" href="https://[{$oView->getActiveLangAbbr()}].profity.ch/clk/?lpk=1036686A0E089B9C7736A07FABDDFC7D3096476C" target="_blank">[{oxmultilang ident="PROFITY_CTA"}]</a></p>
+                </div>
+            </div>
 
-           [{* https://[{$oView->getActiveLangAbbr()}].profity.ch/clk/?lpk=1036686A0E089B9C7736A07FABDDFC7D3096476C *}]
 
         </div>
     [{/block}]

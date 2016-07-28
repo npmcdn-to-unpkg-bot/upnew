@@ -87,7 +87,7 @@ $aLang = array(
     'RECENTHISTORY'      => 'Déjà consultés',
     'AMOUNT'                                               => '%',
     'CONFIRM' => 'Confirmer',
-    'ERROR_MESSAGE_USER_INEXISTS'   => 'Deine E-Mail Adresse kann nicht gefunden werden, kontaktiere bitte den Kundendienst.',
+    'ERROR_MESSAGE_USER_INEXISTS'   => 'Malheureusement on n?a pas trouvé ton adresse e-mail, s?il te plaît contactez notre service clients.',
 
     'PROFITY_TITLE'   => 'Un petit cadeau vous attend!',
     'PROFITY_BODY'   => 'Pour vous remercier de votre commande, nous vous offrons un bon cadeau à valoir auprès de l?une de nos boutiques partenaires au choix.',
