@@ -96,6 +96,14 @@ $aLang = array(
 
     'CONFIRM' => 'Confirm',
     'ERROR_MESSAGE_USER_INEXISTS'   => 'There is no account for this email address. Try a different e-mail or create a new account.',
+
+
+    'PROFITY_TITLE'   => 'A small gift is waiting for you!',
+    'PROFITY_BODY'   => 'As a thank you for your valued order, we are giving you a voucher to use in any of our partner shops.',
+    'PROFITY_CTA'   => 'Collect your gift now',
+
+
+
 );
 
 

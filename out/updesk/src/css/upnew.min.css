@@ -1,5 +1,5 @@
 /*
- updesk-frontend 2016-07-27 
+ updesk-frontend 2016-07-28 
 */
 /*---------------------------------------------------
     LESS Elements 0.9
@@ -16,6 +16,39 @@
   .clearfix();
 }
 */
+/* ====== FLAG OBJECT ====== */
+/* URL: http://csswizardry.com/2013/05/the-flag-object/ */
+.o-flag {
+  display: table;
+  width: auto;
+  margin: 10px;
+}
+.o-flag__image,
+.o-flag__body {
+  display: table-cell;
+  vertical-align: middle;
+}
+.o-flag--top .o-flag__image,
+.o-flag--top .o-flag__body {
+  vertical-align: top;
+}
+.o-flag--bottom .o-flag__image,
+.o-flag--bottom .o-flag__body {
+  vertical-align: bottom;
+}
+.o-flag__image {
+  padding-right: 10px;
+}
+.o-flag__image > img {
+  display: block;
+}
+.o-flag--rev .o-flag__image {
+  padding-right: 0;
+  padding-left: 10px;
+}
+.o-flag__body {
+  width: 100%;
+}
 .u-text--bold {
   font-weight: bold;
 }

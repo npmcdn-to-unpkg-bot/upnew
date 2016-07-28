@@ -1,38 +1,38 @@
 /* ====== FLAG OBJECT ====== */
 /* URL: http://csswizardry.com/2013/05/the-flag-object/ */
 
-.flag{
+.o-flag{
   display:table;
   width:auto;
   margin:10px;
 }
 
-.flag__image, .flag__body{
+.o-flag__image, .o-flag__body{
   display:table-cell;
   vertical-align:middle;
 
-  .flag--top &{
+  .o-flag--top &{
     vertical-align:top;
   }
 
-  .flag--bottom &{
+  .o-flag--bottom &{
     vertical-align:bottom;
   }
 }
 
-.flag__image{
+.o-flag__image{
   padding-right:10px;
 
   > img{
     display:block;
   }
 
-  .flag--rev &{
+  .o-flag--rev &{
     padding-right:0;
     padding-left:10px;
   }
 }
 
-.flag__body{
+.o-flag__body{
   width:100%;
 }

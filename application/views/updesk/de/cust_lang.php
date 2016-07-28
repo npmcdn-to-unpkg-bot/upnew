@@ -25,14 +25,14 @@ $sLangName  = "English";
 // -------------------------------
 $aLang = array(
 
-'charset'                               => 'ISO-8859-15',
+    'charset'                               => 'ISO-8859-15',
 
     'STREET'                            => "Strasse",   // split STREET STREET_NO, use them
     'HOUSE_NO'                          => "Nr.",
     'SUBMIT_ORDER'                      => 'Bestellen',
     'STEPS_PAY'                         => "Zahlung & Versand",
-    'STEPS_SEND'                        => "Adresse",  
-     'CHANGE'                           => 'Bearbeiten',
+    'STEPS_SEND'                        => "Adresse",
+    'CHANGE'                           => 'Bearbeiten',
     'CURRENCY'                          => 'Währung',
     'LANGUAGE'                          => 'Sprache',
     'ALL_ITEMS_SHOW'                    => 'Alle Artikel anzeigen',
@@ -73,7 +73,7 @@ $aLang = array(
     'HEADER_BRANDS' => 'Marken',
     'HEADER_BREADCRUMB_HOME' => 'Zur Startseite',
     'LIST_AVA_SIZES' => 'Verfügbare Grössen',
-    
+
     'FOOTER_PAYMENT_METHODS'    => 'Zahlungsarten',
     'FOOTER_PAYMENT_INVOICE'    => 'Rechnung',
     'FOOTER_PAYMENT_PREPAYMENT' => 'Vorauszahlung',
@@ -98,7 +98,13 @@ $aLang = array(
     'CONFIRM' => 'Bestätigen',
     'ERROR_MESSAGE_USER_INEXISTS'   => 'Zu dieser E-Mail Adresse gibt es kein Benutzerkonto. Versuche eine andere E-Mail oder erstelle ein neues Konto.',
 
-	
+    'PROFITY_TITLE'   => 'Auf Dich wartet ein kleines Geschenk!',
+    'PROFITY_BODY'   => 'Als Dankeschön für Ihre geschätzte Bestellung schenken wir Ihnen einen Gutschein nach Wahl von unseren Partnershops.',
+    'PROFITY_CTA'   => 'Jetzt Geschenk abholen',
+
+
+
+
 
 
 );

@@ -174,11 +174,19 @@
         </div>
     [{/if}]
 
+    </div>
 
-
-
-
-
+    <div class="col-lg-12">
+        <div class="flag flag--bottom">
+            <a href="https://[{$oView->getActiveLangAbbr()}].profity.ch/clk/?lpk=1036686A0E089B9C7736A07FABDDFC7D3096476C" target="_blank" class="flag__image">
+                <img src="http://s.cdpn.io/13060/megaman_72x72.png" alt="Megaman" />
+            </a>
+            <div class="flag__body">
+                <p class="u-text--bold">Auf Sie wartet ein kleines Geschenk!</p>
+                <p>Als Dankeschön für Ihre geschätzte Bestellung schenken wir Ihnen einen Gutschein nach Wahl von unseren Partnershops.</p>
+                <p>Jetzt Geschenk abholen</p>
+            </div>
+        </div>
     </div>
 
     <div class="col-xs-12">
