@@ -175,9 +175,6 @@
     [{/if}]
 
     </div>
-
-
-
     <div class="col-xs-12">
         <div class="c-orderarticles-list">
         <h2>Bestellte Artikel</h2>
