@@ -8,15 +8,23 @@
       [{oxid_include_widget cl="oxwServiceList" noscript=1 nocookie=1}]
       [{oxid_include_widget cl="oxwInformation" noscript=1 nocookie=1}]
     </div>
+    [{if $smarty.get.fullwidth == 1 }]
+    <div class="col-lg-10">
+        <div class="content">
+            [{$oView->getParsedContent()}]
+        </div>
+    </div>
+    [{else}]
     <div class="col-lg-6">
     <h1 class="page-head">[{$template_title}]</h1>
         <div class="content">
             [{$oView->getParsedContent()}]
         </div>
     </div>
-     <div class="col-lg-4">
+    <div class="col-lg-4">
          [{include file="widget/address/shop_info_address.tpl" }]
     </div>
+    [{/if}]
     [{else}] 
           [{$oView->getParsedContent()}]
     [{/if}]

@@ -1,0 +1,16 @@
+/* Dashed List */
+ul.u-indentlist {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 2em;
+}
+ul.u-indentlist > li:before {
+  display: inline-block;
+  content: "-";
+  width: 1em;
+  margin-left: -1em;
+}
+
+ul.u-indentlist--dashed > li:before {
+  content: "-";
+}

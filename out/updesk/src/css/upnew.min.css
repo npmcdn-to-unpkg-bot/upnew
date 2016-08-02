@@ -1,5 +1,5 @@
 /*
- updesk-frontend 2016-07-28 
+ updesk-frontend 2016-08-02 
 */
 /*---------------------------------------------------
     LESS Elements 0.9
@@ -78,6 +78,21 @@
 }
 .u-text--success {
   color: green;
+}
+/* Dashed List */
+ul.u-indentlist {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 2em;
+}
+ul.u-indentlist > li:before {
+  display: inline-block;
+  content: "-";
+  width: 1em;
+  margin-left: -1em;
+}
+ul.u-indentlist--dashed > li:before {
+  content: "-";
 }
 .c-account-order,
 .border-box {
