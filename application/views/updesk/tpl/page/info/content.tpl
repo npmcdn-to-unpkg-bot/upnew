@@ -4,7 +4,7 @@
     [{assign var="oxloadid" value=$oViewConf->getActContentLoadId()}]
     [{assign var="template_title" value=$oView->getTitle()}]
     [{if !fullwidth || 1==1}]
-    <div class="col-lg-2 sidebar-left">
+    <div class="col-lg-2 sidebar-left resp-xs-hidden">
       [{oxid_include_widget cl="oxwServiceList" noscript=1 nocookie=1}]
       [{oxid_include_widget cl="oxwInformation" noscript=1 nocookie=1}]
     </div>
