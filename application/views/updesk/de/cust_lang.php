@@ -99,7 +99,7 @@ $aLang = array(
     'ERROR_MESSAGE_USER_INEXISTS'   => 'Zu dieser E-Mail Adresse gibt es kein Benutzerkonto. Versuche eine andere E-Mail oder erstelle ein neues Konto.',
 
     'PROFITY_TITLE'   => 'Auf Dich wartet ein kleines Geschenk!',
-    'PROFITY_BODY'   => 'Als Dankeschön für Ihre geschätzte Bestellung schenken wir Ihnen einen Gutschein nach Wahl von unseren Partnershops.',
+    'PROFITY_BODY'   => 'Als Dankeschön für Deine geschätzte Bestellung schenken wir Dir einen Gutschein nach Wahl von unseren Partnershops.',
     'PROFITY_CTA'   => 'Jetzt Geschenk abholen',
 
 );
