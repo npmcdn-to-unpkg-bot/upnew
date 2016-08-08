@@ -1,5 +1,5 @@
 /*
- updesk-frontend 2016-08-02 
+ updesk-frontend 2016-08-08 
 */
 /*---------------------------------------------------
     LESS Elements 0.9
@@ -147,7 +147,7 @@ ul.u-indentlist--dashed > li:before {
   line-height: 20px;
   background: #fff0e1;
   border: 1px solid #000;
-  width: 600px;
+  width: 715px;
   margin: 0 0 25px;
 }
 .c-esr__heading {

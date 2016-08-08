@@ -1,3 +1,4 @@
+[{assign var="config" value=$oViewConf->getConfig()}]
 [{capture append="oxidBlock_content"}]
 [{assign var="template_title" value="ORDER_HISTORY"|oxmultilangassign}]
 <div class="col-lg-2 sidebar-left">
@@ -124,7 +125,6 @@
 
 
     [{if $smarty.get.esr == 1 }]
-
         <div class="c-esr payingslip esr">
             <div class="c-esr__heading u-12/12">
                 <span class="c-esr__borderbox u-1/3 u-text--center">Einzahlung Giro</span>
@@ -135,12 +135,15 @@
                 <div class="c-esr__borderbox c-esr__borderbox--padded u-5/12">
                     <div class="c-esr__caption">Einzahlung für/Versement pour/Versamento per</div>
                     <div class="c-esr__address">
-                        <span class="u-text--block">Urbanpeople.com AG</span>
-                        <span class="u-text--block">Friedaustrasse 17</span>
-                        <span class="u-text--block">8003 Zürich</span>
+                        <span class="u-text--block">[{$config->getConfigParam('sBankName')}]</span>
+                        <span class="u-text--block">[{$config->getConfigParam('sBankCity')}]</span>
+                        <div class="c-esr__caption">Zugunsten von/En faveur de/A favore di</div>
+                        <span class="u-text--block">[{$config->getConfigParam('sRecipientName')}]</span>
+                        <span class="u-text--block">[{$config->getConfigParam('sRecipientAdress')}]</span>
+                        <span class="u-text--block">[{$config->getConfigParam('sRecipientCity')}]</span>
                     </div>
                     <div class="c-esr__caption">Konto/Compte/Conto</div>
-                    <span class="u-text--block u-text--bold">01-36000-2</span>
+                    <span class="u-text--block u-text--bold">[{$config->getConfigParam('sBankingAccount')}]</span>
                     <div class="c-esr__numberbox c-esr__numberbox u-text--align-right">CHF 145.70</div>
                     <div class="place-holder">&nbsp;</div>
                 </div>
@@ -160,12 +163,12 @@
                     <div>
                         <div class="c-esr__borderbox c-esr__borderbox--padded">
                             <div class="c-esr__caption">Referenz Nr./No de reference/No di riferimento</div>
-                            <div class="c-esr__numberbox">11 07567 00469 51838</div>
+                            <div class="c-esr__numberbox">11 07567 00469 51838</div><br>
                             <div class="c-esr__caption">Einbezahlt von/Verse par/Versato da</div>
                             <div class="c-esr__address">
-                                <span class="u-text--block">Urbanpeople.com AG</span>
-                                <span class="u-text--block">Friedaustrasse 17</span>
-                                <span class="u-text--block">8003 Zürich</span>
+                                <span class="u-text--block">[{$order->oxorder__oxbillfname->value}] [{$order->oxorder__oxbilllname->value}]</span>
+                                <span class="u-text--block">[{$order->oxorder__oxbillstreet->value}] [{$order->oxorder__oxbillstreetnr->value}]</span>
+                                <span class="u-text--block">[{$order->oxorder__oxbillzip->value}] [{$order->oxorder__oxbillcity->value}]</span>
                             </div>
                         </div>
                     </div>

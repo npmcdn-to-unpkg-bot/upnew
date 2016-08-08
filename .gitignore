@@ -17,7 +17,7 @@
 /out/*
 !/out/updesk
 /out/updesk/node_modules
-/out/updesk/src/css/*.css
+/out/updesk/src/css/
 
 !/modules
 /modules/*
