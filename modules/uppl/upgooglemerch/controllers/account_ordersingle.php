@@ -28,9 +28,29 @@
  * ordered articles information, button to add article to basket.
  * OXID eShop -> MY ACCOUNT -> Newsletter.
  */
+
+/**
+ * config to fetch paths
+ */
+$myConfig = oxRegistry::getConfig();
+
+/**
+ * needed libraries location
+ */
+$sIncPath = $myConfig->getConfigParam('sShopDir');
+
+
+
+/**
+ * including libraries
+ */
+require_once "$sIncPath/core/uppl/ezs/class.einzahlungsschein.php";
+
+//echo "$sIncPath/core/upplezs/class.einzahlungsschein.php";
+
 class Account_OrderSingle extends Account_Order
 {
-
+    protected $_sOrderOxid = false;
     /**
      * If user is not logged in - returns name of template account_order::_sThisLoginTemplate,
      * or if user is allready logged in - returns name of template
@@ -50,9 +70,9 @@ class Account_OrderSingle extends Account_Order
 
         $oConfig = $this->getConfig();
          
-        if( $sOxid = $this->getOxidfromOrderNr() ){
+        if( $this->_sOrderOxid = $this->getOxidfromOrderNr() ){
 			 $orders = $this->getOrderList();
-			 $this->_aViewData['order'] = $orders[$sOxid];
+			 $this->_aViewData['order'] = $orders[$this->_sOrderOxid];
 			 $this->_aViewData["paymentType"] = $this->_aViewData['order']->getPaymentType();
 		}else{
 		    oxRegistry::getUtils()->redirect($oConfig->getShopHomeURL() . 'cl=account_order', false, 302);
@@ -112,9 +132,42 @@ class Account_OrderSingle extends Account_Order
                 return false;
             }
 
+        }
+    }
 
+    public function getEsrRef(){
+
+
+        // load object
+        $oOrder = oxNew( "oxorder" );
+        if ( $oOrder->load( $this->_sOrderOxid  ) ) {
+
+
+            $myConfig = oxRegistry::getConfig();
+
+            $amount = $oOrder->oxorder__oxtotalordersum->value;
+            $ref = $oOrder->oxorder__oxordernr->value;
+            $ez = new createEinzahlungsschein();
+
+
+            $ez->setBankData($myConfig->getConfigParam("sBankName"), $myConfig->getConfigParam("sBankCity"), $myConfig->getConfigParam("sBankingAccount"));
+            $ez->setRecipientData($myConfig->getConfigParam("sRecipientName"), $myConfig->getConfigParam("sRecipientAdress"), $myConfig->getConfigParam("sRecipientCity"), $myConfig->getConfigParam("sBankingCustomerIdentification"));
+
+
+            $z_name = $oOrder->oxorder__oxbillfname->value . " " . $oOrder->oxorder__oxbilllname->value;
+            $z_strasse = $oOrder->oxorder__oxbillstreet->value . " " . $oOrder->oxorder__oxbillstreetnr->value;
+            $z_ort = $oOrder->oxorder__oxbillzip->value . " " . $oOrder->oxorder__oxbillcity->value;
+            $z_firma = "";
+            $z_firma = $oOrder->oxorder__oxbillcompany->value;
+
+
+            $ez->setPayerData($z_firma, $z_name, $z_strasse, $z_ort);
+            $ez->setPaymentData($amount, $ref);
+
+            return $ez->getCreateCompleteReferenceNumber();
 
         }
+
     }
  
    

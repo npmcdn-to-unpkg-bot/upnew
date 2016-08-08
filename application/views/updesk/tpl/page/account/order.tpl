@@ -60,6 +60,8 @@
                 [{if $oView->getEsrUrl()}]
                 <li class="list-group-item"><span class="u-text--bold u-text--float-left">Jetzt Bezahlen:</span>
                     <a target="_blank" href="[{$oView->getEsrUrl()}]">Einzahlungsschein ansehen</a>
+
+                    [{$oView->getEsrRef()}]
                 </li>
                 [{/if}]
             </ul>
@@ -163,7 +165,7 @@
                     <div>
                         <div class="c-esr__borderbox c-esr__borderbox--padded">
                             <div class="c-esr__caption">Referenz Nr./No de reference/No di riferimento</div>
-                            <div class="c-esr__numberbox">11 07567 00469 51838</div><br>
+                            <div class="c-esr__numberbox">[{$oView->getEsrRef()}]</div><br>
                             <div class="c-esr__caption">Einbezahlt von/Verse par/Versato da</div>
                             <div class="c-esr__address">
                                 <span class="u-text--block">[{$order->oxorder__oxbillfname->value}] [{$order->oxorder__oxbilllname->value}]</span>
