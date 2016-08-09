@@ -135,9 +135,8 @@ class Account_OrderSingle extends Account_Order
         }
     }
 
+    //create and get Reference Number; maybe this could be done manually
     public function getEsrRef(){
-
-
         // load object
         $oOrder = oxNew( "oxorder" );
         if ( $oOrder->load( $this->_sOrderOxid  ) ) {

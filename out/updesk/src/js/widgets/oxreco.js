@@ -20,7 +20,7 @@
 
 
 
-( function ( $ ) {
+(function ($) {
 
     /**
      * Cookie note handler
@@ -53,7 +53,7 @@
                 maxValuesPerFacet: 1,
                 facets: ['rootcat','filtergender','manufacturer_id','maincat','oxartnum','sizes'],
                 disjunctiveFacets: ['filtercolor'],
- 
+                analytics: false,
              };
              
              if( $( window ).width() < 920){
@@ -285,7 +285,8 @@
                 hitsPerPage: 1,
                 maxValuesPerFacet: 1,
                 facets: [],
-                disjunctiveFacets: []
+                disjunctiveFacets: [],
+                analytics: false,
              };
             var algolia = algoliasearch(APPLICATION_ID, SEARCH_ONLY_API_KEY);
             var algoliaSingleArticle = algoliasearchHelper(algolia, 'oxarticles_0_oxidseo', PARAMS);
