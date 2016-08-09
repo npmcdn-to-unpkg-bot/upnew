@@ -23,13 +23,13 @@
 <!-- Hit template -->
 <script type="text/template" id="reco-hits-template">
 {{#hits}}
-<div class="hit" data-anid="{{objectID}}" data-href="{{seourl}}">
+<a class="hit" data-anid="{{objectID}}" href="{{seourl}}">
   <div class="hit-image">
     <img class="size-tip" src="/out/pictures/generated/product/1/304_304_92/{{ oxpic1 }}" data-p2="/out/pictures/generated/product/2/304_304_92/{{ oxpic2 }}" data-sizetip-sizes="{{#sizes}}<i>{{.}}</i>{{/sizes}}">
   </div>
   <div class="hit-title">{{ oxtitle_1 }}</div>
   <div class="hit-price" data-price="{{ price }}"></div>
-</div>
+</a>
 {{/hits}}
 </script>
 
