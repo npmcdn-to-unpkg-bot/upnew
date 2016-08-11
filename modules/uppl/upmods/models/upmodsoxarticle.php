@@ -67,7 +67,7 @@ class upModsOxArticle extends upModsOxArticle_parent
     
     
     /**
-     * Check if Product is virtual: is non material and is downloadable
+     * stock handling for variant items, return 99
      *
      * @return bool
      */
@@ -88,7 +88,7 @@ class upModsOxArticle extends upModsOxArticle_parent
 				 }else{
 				     //echo "<script>console.log('".$oVariant->oxarticles__oxid->value."-". $oVariant->oxarticles__oxartnum->value ." / ".$check ." / ".$oVariant->getStockStatus()."')</script>";
 				 }
-			    	
+
 				 $check = $oVariant->getStockStatus();
                 		 
 			}

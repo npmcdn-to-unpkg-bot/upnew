@@ -181,37 +181,80 @@
 
     </div>
     <div class="col-xs-12">
-        <div class="c-orderarticles-list">
+        <div>
         <h2>Bestellte Artikel</h2>
             [{foreach from=$order->getOrderArticles() item=orderitem name=testOrderItem}]
 
                 [{assign var=sArticleId value=$orderitem->oxorderarticles__oxartid->value }]
                 [{assign var=oArticle value=$orderitem->getArticle() }]
 
-                <div class="c-orderarticles-item">
+                <div class="row u-marg-bottom-15">
                     <div class="col-sm-8">
-                        [{if $oArticle->oxarticles__oxid->value && $oArticle->isVisible() }]<a href="[{$oArticle->getLink()}]">[{/if}]
-                            <img class="icon pull-left" src="[{$oArticle->getIconUrl() }]" >
-                        [{if $oArticle->oxarticles__oxid->value && $oArticle->isVisible() }]</a>[{/if}]
-                        <div class="c-orderarticles-item__title pull-left" style="padding-left:15px;">
-                            <div class="t1">[{$oArticle->getFirstTitleLine()}]</div>
-                            <div class="t2">[{$oArticle->getSecondTitleLine()}]</div>
-                            <div class="t3">[{$oArticle->getThirdTitleLine()}]</div>
-                            <div class="t4">[{$oArticle->oxarticles__oxartnum->value}]</div>
-                            [{if $orderitem->oxorderarticles__oxselvariant->value}]
-                                <div class="variants">Grösse: [{$orderitem->oxorderarticles__oxselvariant->value}]</div>
-                            [{/if}]
+
+                        <div class="media">
+                            <div class="media-left">
+                                [{if $oArticle->oxarticles__oxid->value && $oArticle->isVisible() }]<a href="[{$oArticle->getLink()}]">[{/if}]
+                                    <img class="media-object" src="[{$oArticle->getIconUrl() }]" >
+                                [{if $oArticle->oxarticles__oxid->value && $oArticle->isVisible() }]</a>[{/if}]
+                            </div>
+                            <div class="media-body">
+                                <div class="u-text--bold">[{$oArticle->getFirstTitleLine()}]</div>
+                                <div>[{$oArticle->getSecondTitleLine()}]</div>
+                                <div>[{$oArticle->getThirdTitleLine()}]</div>
+                                <div>[{$oArticle->oxarticles__oxartnum->value}]</div>
+                                [{if $orderitem->oxorderarticles__oxselvariant->value}]
+                                <div class="u-text--bold">Grösse: [{$orderitem->oxorderarticles__oxselvariant->value}]</div>
+                                [{/if}]
+                            </div>
                         </div>
 
                     </div>
                     <div class="col-sm-4">
-                        <div class="pull-left" title="[{oxmultilang ident="QNT"}]">Anzahl: [{$orderitem->oxorderarticles__oxamount->value}]</div>
+                        <div class="clearfix">
+                            <div class="u-text--float-left">Anzahl: [{$orderitem->oxorderarticles__oxamount->value}]</div>
 
-                        <div class="pull-right">
-                            <div class="fir">[{$orderitem->getBrutPriceFormated()}]</div>
-                            <div class="sec"></div>
+                            <div class="u-text--float-right">[{$order->oxorder__oxcurrency->value}] [{$orderitem->getBrutPriceFormated()}]</div>
+                        </div>
+                        <div class="u-text--float-left">
+                            [{if 1==1}]
+                                [{if $oArticle->getStockStatus() == -1}]
+
+                                    [{if $oArticle->getDeliveryDate()}]
+                                        <span style="color:#0000FF;">
+                                        [{oxmultilang ident="AVAILABLE_ON"}] [{$oArticle->getDeliveryDate()}]
+                                        </span>
+                                    [{else}]
+                                        [{if $oArticle->oxarticles__oxnostocktext->value}]
+                                            [{$oArticle->oxarticles__oxnostocktext->value}]
+                                        [{elseif $oViewConf->getStockOffDefaultMessage()}]
+                                            [{oxmultilang ident="MESSAGE_NOT_ON_STOCK"}]
+                                        [{/if}]
+                                    [{/if}]
+
+                                [{elseif $oArticle->getStockStatus() == 1}]
+                                    <span class="u-text--green">
+                                        [{*oxmultilang ident="LOW_STOCK"*}]
+                                        [{oxmultilang ident="READY_FOR_SHIPPING"}]
+                                    </span>
+                                    [{elseif $oArticle->getStockStatus() == 0}]
+                                    <span class="u-text--green">
+                                        [{if $oArticle->oxarticles__oxstocktext->value}]
+                                            [{$oArticle->oxarticles__oxstocktext->value}]
+                                        [{elseif $oViewConf->getStockOnDefaultMessage()}]
+                                            [{oxmultilang ident="READY_FOR_SHIPPING"}]
+                                        [{/if}]
+                                    </span>
+
+                                [{/if}]
+                            [{else}]
+                                <!-- versendet -->
+                            [{/if}]
                         </div>
                     </div>
+
+
+
+
                 </div>
             [{/foreach}]
         </div>
@@ -329,39 +372,7 @@
                                 [{/oxhasrights}]
                                 *}]
                            
-                                [{if  1==2}] ee version $orderitem->getStatus()
-                                    <div class="article-details">
-                                        <strong>[{oxmultilang ident="DELIVERY_STATUS"}]</strong>
-                                        <ul>
-                                            [{foreach from=$orderitem->getStatus() item=aStatus }]
-                                                <li>
-                                                    <strong>[{if $aStatus->STATUS == "ANG"}]
-                                                      [{oxmultilang ident="DELIVERY_STATUS_ANG"}]
-                                                    [{elseif $aStatus->STATUS == "HAL"}]
-                                                      [{oxmultilang ident="DELIVERY_STATUS_HAL"}]
-                                                    [{elseif $aStatus->STATUS == "BES"}]
-                                                      [{oxmultilang ident="DELIVERY_STATUS_BES"}]
-                                                    [{elseif $aStatus->STATUS == "EIN"}]
-                                                      [{oxmultilang ident="DELIVERY_STATUS_EIN"}]
-                                                    [{elseif $aStatus->STATUS == "AUS"}]
-                                                      [{oxmultilang ident="DELIVERY_STATUS_AUS"}]
-                                                    [{elseif $aStatus->STATUS == "STO"}]
-                                                      [{oxmultilang ident="DELIVERY_STATUS_STO"}]
-                                                    [{elseif $aStatus->STATUS == "NLB"}]
-                                                      [{oxmultilang ident="DELIVERY_STATUS_NLB"}]
-                                                    [{else}]
-                                                      [{$aStatus->STATUS}]
-                                                    [{/if}]</strong>
-                                                    <span>([{$aStatus->date|date_format:"%d.%m.%Y %H:%M"}]) </span>
-                                                </li>
-                                            [{/foreach}]
-                                        </ul>
-                                        [{if $aStatus->trackingid }]
-                                            <strong>[{oxmultilang ident="TRACKING_ID"}]</strong>
-                                            <span>[{$aStatus->trackingid}]</span>
-                                        [{/if}]
-                                    </div>
-                                [{/if}]
+
                  
                         </div>
                     [{/foreach}]
