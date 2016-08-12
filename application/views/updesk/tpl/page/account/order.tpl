@@ -220,15 +220,17 @@
                                 [{if $oArticle->getStockStatus() == -1}]
 
                                     [{if $oArticle->getDeliveryDate()}]
-                                        <span style="color:#0000FF;">
-                                        [{oxmultilang ident="AVAILABLE_ON"}] [{$oArticle->getDeliveryDate()}]
+                                        <span class="u-text--blue">
+                                            [{oxmultilang ident="AVAILABLE_ON"}] [{$oArticle->getDeliveryDate()}]
                                         </span>
                                     [{else}]
-                                        [{if $oArticle->oxarticles__oxnostocktext->value}]
-                                            [{$oArticle->oxarticles__oxnostocktext->value}]
-                                        [{elseif $oViewConf->getStockOffDefaultMessage()}]
-                                            [{oxmultilang ident="MESSAGE_NOT_ON_STOCK"}]
-                                        [{/if}]
+                                        <span class="u-text--red">
+                                            [{if $oArticle->oxarticles__oxnostocktext->value}]
+                                                [{$oArticle->oxarticles__oxnostocktext->value}]
+                                            [{elseif $oViewConf->getStockOffDefaultMessage()}]
+                                                [{oxmultilang ident="MESSAGE_NOT_ON_STOCK"}]
+                                            [{/if}]
+                                        </span>
                                     [{/if}]
 
                                 [{elseif $oArticle->getStockStatus() == 1}]
@@ -244,7 +246,6 @@
                                             [{oxmultilang ident="READY_FOR_SHIPPING"}]
                                         [{/if}]
                                     </span>
-
                                 [{/if}]
                             [{else}]
                                 <!-- versendet -->
