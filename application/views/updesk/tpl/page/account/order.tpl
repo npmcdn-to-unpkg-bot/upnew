@@ -20,12 +20,12 @@
 <div class="c-account-order border-box">
     <div class="c-account-order__ordernr">Bestelldetails Nr. [{ $order->oxorder__oxordernr->value }]</div>
 	<div class="col-sm-6">
-        <div>
+
             <p>
                 <span class="u-text--bold">[{oxmultilang ident="ORDER_DATE"}]</span> [{ $order->oxorder__oxorderdate->value|date_format:"%d.%m.%Y %H:%M:%S" }]<br>
                 <span class="u-text--bold">Letzte Anpassung</span> [{ $order->oxorder__oxtimestamp->value|date_format:"%d.%m.%Y %H:%M:%S" }]
             </p>
-            
+
             <h2>Versandinfos</h2>
             <ul class="list-group">
                 <li class="list-group-item"><span class="u-text--bold u-text--float-left">Versandart</span><span class="u-text--float-right">[{assign var="deliveryType" value=$order->getDelSet()}][{$deliveryType->oxdeliveryset__oxtitle->value}]</span></li>
@@ -57,6 +57,8 @@
                         <span class="u-text--float-right">Zahlung offen</span>
                     [{/if }]
                 </li>
+                [{*}]
+                url to pdf, not used atm. should be maybe merged with nice esr design.
                 [{if $oView->getEsrUrl()}]
                 <li class="list-group-item"><span class="u-text--bold u-text--float-left">Jetzt Bezahlen:</span>
                     <a target="_blank" href="[{$oView->getEsrUrl()}]">Einzahlungsschein ansehen</a>
@@ -64,19 +66,13 @@
                     [{$oView->getEsrRef()}]
                 </li>
                 [{/if}]
+                [{*}]
             </ul>
 
-        </div>
-        <!--
-        <div>
-		    <b>[{ oxmultilang ident="ORDER_SHIPPINGCARRIER" }]:</b>
-            [{assign var="deliveryType" value=$order->getDelSet()}]
-            [{$deliveryType->oxdeliveryset__oxtitle->value}]
-        </div>
-        <div>
-            <b>Zahlungsart:</b> [{$paymentType->oxpayments__oxdesc->value}]
-        </div>
-        -->
+
+
+
+
 	</div>
 	<div class="col-sm-6">
 		<div class="row">
@@ -216,7 +212,15 @@
                             <div class="u-text--float-right">[{$order->oxorder__oxcurrency->value}] [{$orderitem->getBrutPriceFormated()}]</div>
                         </div>
                         <div class="u-text--float-left">
-                            [{if 1==1}]
+                            [{if $order->oxorder__oxstorno->value}]
+                                <span class="u-text--red">
+                                    [{oxmultilang ident="ORDER_IS_CANCELED"}]
+                                </span>
+                            [{elseif $order->oxorder__oxsenddate->value !="-" }]
+                                <span class="u-text--green">
+                                    [{oxmultilang ident="SHIPPED"}]
+                                </span>
+                            [{else}]
                                 [{if $oArticle->getStockStatus() == -1}]
 
                                     [{if $oArticle->getDeliveryDate()}]
@@ -232,13 +236,12 @@
                                             [{/if}]
                                         </span>
                                     [{/if}]
-
                                 [{elseif $oArticle->getStockStatus() == 1}]
                                     <span class="u-text--green">
                                         [{*oxmultilang ident="LOW_STOCK"*}]
                                         [{oxmultilang ident="READY_FOR_SHIPPING"}]
                                     </span>
-                                    [{elseif $oArticle->getStockStatus() == 0}]
+                                [{elseif $oArticle->getStockStatus() == 0}]
                                     <span class="u-text--green">
                                         [{if $oArticle->oxarticles__oxstocktext->value}]
                                             [{$oArticle->oxarticles__oxstocktext->value}]
@@ -247,15 +250,10 @@
                                         [{/if}]
                                     </span>
                                 [{/if}]
-                            [{else}]
-                                <!-- versendet -->
                             [{/if}]
+
                         </div>
                     </div>
-
-
-
-
                 </div>
             [{/foreach}]
         </div>
@@ -372,9 +370,7 @@
                                 [{/if}]
                                 [{/oxhasrights}]
                                 *}]
-                           
 
-                 
                         </div>
                     [{/foreach}]
                 </div>

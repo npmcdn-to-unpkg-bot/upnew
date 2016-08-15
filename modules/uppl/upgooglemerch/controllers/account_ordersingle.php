@@ -163,11 +163,35 @@ class Account_OrderSingle extends Account_Order
             $ez->setPayerData($z_firma, $z_name, $z_strasse, $z_ort);
             $ez->setPaymentData($amount, $ref);
 
-            return $ez->getCreateCompleteReferenceNumber();
+            return $this->breakStringIntoBlocks($ez->getCreateCompleteReferenceNumber());
+
 
         }
 
     }
+
+    /**
+     * Displays a string in blocks of a certain size.
+     * Example: 00000000000000000000 becomes more readable 00000 00000 00000
+
+     * @param string $string
+     * @param int $blocksize
+     * @return int
+     */
+    private function breakStringIntoBlocks($string, $blocksize=5) {
+
+        //lets reverse the string (because we want the block to be aligned from the right)
+        $newString = strrev($string);
+
+        //chop it into blocks
+        $newString = chunk_split($newString, $blocksize);
+
+        //re-reverse
+        $newString = strrev($newString);
+
+        return $newString;
+
+    }//function
  
    
 }
