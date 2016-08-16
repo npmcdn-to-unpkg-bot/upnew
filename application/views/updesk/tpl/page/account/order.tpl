@@ -184,11 +184,11 @@
                 [{assign var=sArticleId value=$orderitem->oxorderarticles__oxartid->value }]
                 [{assign var=oArticle value=$orderitem->getArticle() }]
 
-                <div class="row u-marg-bottom-15">
-                    <div class="col-sm-8">
+                <div class="row u-m-b-15">
+                    <div class="col-sm-6">
 
                         <div class="media">
-                            <div class="media-left">
+                            <div class="media-left u-p-r-15">
                                 [{if $oArticle->oxarticles__oxid->value && $oArticle->isVisible() }]<a href="[{$oArticle->getLink()}]">[{/if}]
                                     <img class="media-object" src="[{$oArticle->getIconUrl() }]" >
                                 [{if $oArticle->oxarticles__oxid->value && $oArticle->isVisible() }]</a>[{/if}]
@@ -205,7 +205,7 @@
                         </div>
 
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <div class="clearfix">
                             <div class="u-text--float-left">Anzahl: [{$orderitem->oxorderarticles__oxamount->value}]</div>
 
@@ -257,6 +257,50 @@
                 </div>
             [{/foreach}]
         </div>
+        <div class="row u-m-b-15">
+            <div class="col-sm-6 col-sm-offset-6">
+                <table border="0" cellspacing="0" cellpadding="0" class="pull-right u-12/12">
+                    [{block name="admin_order_overview_total"}]
+                    <tr>
+                        <td>[{ oxmultilang ident="SUBTOTAL" }]</td>
+                        <td class="u-text--bold u-text--align-right">[{$order->oxorder__oxcurrency->value}] [{$order->getFormattedTotalBrutSum()}]</td>
+                    </tr>
+
+                    [{if $order->oxorder__oxdiscount->value}]
+                    <tr>
+                        <td>[{oxmultilang ident="DISCOUNT"}]</td>
+                        <td class="u-text--bold u-text--align-right">- [{$order->oxorder__oxcurrency->value}] [{$order->getFormattedDiscount()}]</td>
+                    </tr>
+                    [{/if}]
+
+                    [{if $order->oxorder__oxvoucherdiscount->value}]
+                    <tr>
+                        <td>[{oxmultilang ident="COUPON"}]</td>
+                        <td class="u-text--bold u-text--align-right">- [{$order->oxorder__oxcurrency->value}] [{$order->getFormattedTotalVouchers()}]</td>
+                    </tr>
+                    [{/if}]
+                    <tr>
+                        <td>[{oxmultilang ident="SHIPPING_COST"}]</td>
+                        <td class="u-text--bold u-text--align-right">[{$order->oxorder__oxcurrency->value}] [{$order->getFormattedeliveryCost()}]</td>
+
+                    </tr>
+                    <tr>
+                        <td>[{if $oxcmp_basket->getPaymentCosts() >= 0}][{oxmultilang ident="SURCHARGE"}][{else}][{oxmultilang ident="DEDUCTION"}][{/if}] [{oxmultilang ident="PAYMENT_METHOD"}]</td>
+                        <td class="u-text--bold u-text--align-right">[{$order->oxorder__oxcurrency->value}] [{$order->getFormattedPayCost()}]</b></td>
+                    </tr>
+
+                    <tr>
+                        <td class="u-text--larger u-p-t-15">[{oxmultilang ident="GRAND_TOTAL" suffix="COLON"}]</td>
+                        <td class="u-text--bold u-p-t-15 u-text--align-right">[{$order->oxorder__oxcurrency->value}] [{ $order->getFormattedTotalOrderSum() }]</td>
+                    </tr>
+                    [{/block}]
+                </table>
+
+            </div>
+        </div>
+
+
+
     </div>
 
 </div>
@@ -302,7 +346,9 @@
             </div>
          
 
-        	<div class="col-lg-12"><a class="btn btn-default" href="[{oxgetseourl ident=$oViewConf->getSelfLink()|cat:"cl=account_ordersingle" params="order="|cat:$order->oxorder__oxordernr->value}]" >Details zur Bestellung [{ $order->oxorder__oxordernr->value }] <span class="glyphicon glyphicon-circle-arrow-right"></span></a></div>
+        	<div class="col-lg-12">
+                <a class="btn btn-default u-p-t-15" href="[{oxgetseourl ident=$oViewConf->getSelfLink()|cat:"cl=account_ordersingle" params="order="|cat:$order->oxorder__oxordernr->value}]" >Details zur Bestellung [{ $order->oxorder__oxordernr->value }] <span class="glyphicon glyphicon-plus"></span></a>
+            </div>
 
         </div>
         [{if  1==2}] 

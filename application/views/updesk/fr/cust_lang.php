@@ -18,16 +18,21 @@
  * @link      http://www.oxid-esales.com
  * @copyright (C) OXID eSales AG 2003-2015
  */
+
 $sLangName  = "Deutsch";
 // -------------------------------
 // RESOURCE IDENTIFIER = STRING
 // -------------------------------
 $aLang = array(
+
     'charset'                               => 'ISO-8859-15',
+
     'STREET'                                => "nom de rue",   // split STREET STREET_NO, use them
     'HOUSE_NO'                              => "N° de rue",
+    'SUBMIT_ORDER'                          => "Valider",
     'STEPS_PAY'                             => "Modes de paiement &amp; d'expédition",
     'STEPS_SEND'                            => "adresse",
+    'CHANGE'                                => "Modifier",
     'CURRENCY'                              => 'monnaie',
     'LANGUAGE'                              => 'langue',
     'ALL_ITEMS_SHOW'                        => 'Montrer tous les articles',
@@ -41,6 +46,9 @@ $aLang = array(
     'oxvarminpriceDirectionDesc'            => 'prix le plus élevé en premier',
     'oxinsertDirectionAsc'                  => 'plus âgé en premier',
     'oxinsertDirectionDesc'                 => 'plus récents en premier',
+
+    'SUBTOTAL'                              => 'total',
+
     'CHECKOUT_USER_ALREADY_CUSTOMER'        => 'Je suis déjà client',
     'CHECKOUT_USER_ALREADY_CUSTOMER_INFO'   => 'Entres tes identifiants pour te connecter à ton compte urbanpeople.com',
     'CHECKOUT_USER_NEW_CUSTOMER'            => 'Je suis un nouveau client',
@@ -52,14 +60,16 @@ $aLang = array(
     'CHECKOUT_HEADER_TRUST_RETURNDAYS'      => '30 jours politique de retour',
     'CHECKOUT_HEADER_TRUST_DELIVERY'        => 'Livraison gratuite à partir de CHF 80.-',
     'ORDER_REMARK' => 'Remarques de commande',
+    'SELECT_SHIPPING_METHOD'                                      => 'Choisis le mode d\'expédition',
+    'SELECT_PAYMENT_METHOD'                             => 'Choisi le mode de paiement',
+
     'PAGE_CHECKOUT_THANKYOU_REGISTEREDYOUORDERNO1'                => "",
     'PAGE_CHECKOUT_THANKYOU_REGISTEREDYOUORDERNO2'                => "<br><br>Meilleures salutations<br><br>Ton équipe urbanpeople.com",
     'PAGE_CHECKOUT_THANKYOU_THANKYOU1'                            => "Tu as déjà reçu une confirmation par mail de notre part.",
     'PAGE_CHECKOUT_THANKYOU_THANKYOU2'                            => "Avec le numéro de référence ",
     'PAGE_CHECKOUT_THANKYOU_THANKYOU3'                            => ", tu peux à tout moment nous contacter et nous serons en mesure de répondre à tes questions.",
     'MESSAGE_WE_WILL_INFORM_YOU' => "PS: Au cas où, un ou des articles ne serait/seraient pas disponible/s, nous t'informerons immédiatement.",
-    'SELECT_SHIPPING_METHOD'                                      => 'Choisis le mode d\'expédition',
-    'SELECT_PAYMENT_METHOD'                             => 'Choisi le mode de paiement',
+
     'MINIBASKET_EMPTY'                      => 'Aucun articles',
     'MINIBASKET_EDIT'                       => 'Modifier le panier ',
     'HEADER_YOUR_CART'                      => 'Ton panier',
