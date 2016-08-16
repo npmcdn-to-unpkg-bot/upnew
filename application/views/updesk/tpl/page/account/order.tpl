@@ -209,7 +209,7 @@
                         <div class="clearfix">
                             <div class="u-text--float-left">Anzahl: [{$orderitem->oxorderarticles__oxamount->value}]</div>
 
-                            <div class="u-text--float-right">[{$order->oxorder__oxcurrency->value}] [{$orderitem->getBrutPriceFormated()}]</div>
+                            <div class="u-text--float-right u-text--bold">[{$order->oxorder__oxcurrency->value}] [{$orderitem->getBrutPriceFormated()}]</div>
                         </div>
                         <div class="u-text--float-left">
                             [{if $order->oxorder__oxstorno->value}]
@@ -347,7 +347,7 @@
          
 
         	<div class="col-lg-12">
-                <a class="btn btn-default u-p-t-15" href="[{oxgetseourl ident=$oViewConf->getSelfLink()|cat:"cl=account_ordersingle" params="order="|cat:$order->oxorder__oxordernr->value}]" >Details zur Bestellung [{ $order->oxorder__oxordernr->value }] <span class="glyphicon glyphicon-plus"></span></a>
+                <a class="btn btn-default u-m-t-15" href="[{oxgetseourl ident=$oViewConf->getSelfLink()|cat:"cl=account_ordersingle" params="order="|cat:$order->oxorder__oxordernr->value}]" >Details zur Bestellung [{ $order->oxorder__oxordernr->value }] »</a>
             </div>
 
         </div>
