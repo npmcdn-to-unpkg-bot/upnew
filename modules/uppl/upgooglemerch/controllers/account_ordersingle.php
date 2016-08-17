@@ -135,8 +135,8 @@ class Account_OrderSingle extends Account_Order
         }
     }
 
-    //create and get Reference Number; maybe this could be done manually
-    public function getEsrRef(){
+
+    protected function getEzObject(){
         // load object
         $oOrder = oxNew( "oxorder" );
         if ( $oOrder->load( $this->_sOrderOxid  ) ) {
@@ -163,11 +163,19 @@ class Account_OrderSingle extends Account_Order
             $ez->setPayerData($z_firma, $z_name, $z_strasse, $z_ort);
             $ez->setPaymentData($amount, $ref);
 
-            return $this->breakStringIntoBlocks($ez->getCreateCompleteReferenceNumber());
-
+            return $ez;
 
         }
+    }
 
+    public function getEsrRef(){
+        $ez = $this->getEzObject();
+        return $this->breakStringIntoBlocks($ez->getCreateCompleteReferenceNumber());
+    }
+
+    public function getCodeLine(){
+        $ez = $this->getEzObject();
+        return $ez->getCreateBottomLineString();
     }
 
     /**

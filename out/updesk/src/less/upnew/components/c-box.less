@@ -1,17 +1,25 @@
 .c-box{
-  border: 1px solid @palette-Grey-300;
-  padding-bottom:15px;
+  border: 1px solid @palette-Grey-200;
+  padding:15px 25px;
   margin-bottom: 30px;
   .clearfix();
   &--grey{
-    background: @palette-Grey-50;
+    background:@palette-Grey-100;
   }
 }
 
 .c-box__heading{
   background: @palette-Grey-200;
+  border-bottom: 1px solid @palette-Grey-300;
   font-size:16px;
   font-weight:500;
-  padding: 15px;
-  margin-bottom: 15px;
+  padding: 15px 25px;
+  margin: -15px -25px 15px -25px;
+}
+
+.c-box__title{
+  margin: 5px -1px 15px;
+  font-size: 17px;
+  font-weight: 500;
+  position: relative;
 }

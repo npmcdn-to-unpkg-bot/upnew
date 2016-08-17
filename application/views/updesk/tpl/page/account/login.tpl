@@ -6,8 +6,8 @@
     </div>
     <div class="col-lg-6">
         
-        <div class="checkout-section">
-            <h3 class="section-head">[{oxmultilang ident="LOGIN"}]</h3>
+        <div class="c-box c-box--grey">
+            <h3 class="c-box__title">[{oxmultilang ident="LOGIN"}]</h3>
        
              <p>[{oxmultilang ident="LOGIN_ALREADY_CUSTOMER"}]</p>
              

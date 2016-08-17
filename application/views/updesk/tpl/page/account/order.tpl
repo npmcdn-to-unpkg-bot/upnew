@@ -19,114 +19,111 @@
 
 <div class="c-box c-box--grey">
     <div class="c-box__heading">Bestelldetails Nr. [{ $order->oxorder__oxordernr->value }]</div>
-	<div class="col-sm-6">
 
-            <p>
-                <span class="u-text--bold">[{oxmultilang ident="ORDER_DATE"}]</span> [{ $order->oxorder__oxorderdate->value|date_format:"%d.%m.%Y %H:%M:%S" }]<br>
-                <span class="u-text--bold">Letzte Anpassung</span> [{ $order->oxorder__oxtimestamp->value|date_format:"%d.%m.%Y %H:%M:%S" }]
-            </p>
-            [{if !$order->oxorder__oxstorno->value}]
-            <h2>Versandinfos</h2>
-            <ul class="list-group">
-                <li class="list-group-item"><span class="u-text--bold">[{oxmultilang ident="SHIPPING_CARRIER"}]</span><span class="u-text--float-right">[{assign var="deliveryType" value=$order->getDelSet()}][{$deliveryType->oxdeliveryset__oxtitle->value}]</span></li>
-                <li class="list-group-item"><span class="u-text--bold">[{oxmultilang ident="STATUS"}]</span>
-                   [{if $order->oxorder__oxstorno->value}]
-                        <span class="u-text--red u-text--float-right">[{oxmultilang ident="STATUS_CANCELED"}]</span>
-                    [{elseif $order->oxorder__oxsenddate->value !="-" }]
-                        <span class="u-text--green u-text--float-right">[{oxmultilang ident="STATUS_SHIPPED"}] [{$order->oxorder__oxsenddate->value|date_format:"%d.%m.%Y" }]</span>
-                    [{else}]
-                        <span class="u-text--orange u-text--float-right">[{oxmultilang ident="NOT_SHIPPED_YET"}]</span>
-                    [{/if }]
-                </li>
+    <div class="row">
+        <div class="col-sm-6">
 
-                [{assign var="trackcodes" value=","|explode:$order->oxorder__oxtrackcode->value}]
-                [{foreach from=$trackcodes item=trackcode name=tcodes}]
-                    [{if $trackcode}]
-                        <li class="list-group-item"><span class="u-text--bold">Paketnummer</span> <span class="u-text--float-right">[{$trackcode}]</span></li>
+                <p>
+                    <span class="u-text--bold">[{oxmultilang ident="ORDER_DATE"}]</span> [{ $order->oxorder__oxorderdate->value|date_format:"%d.%m.%Y %H:%M:%S" }]<br>
+                    <span class="u-text--bold">Letzte Anpassung</span> [{ $order->oxorder__oxtimestamp->value|date_format:"%d.%m.%Y %H:%M:%S" }]
+                </p>
+                [{if !$order->oxorder__oxstorno->value}]
+                <h2>Versandinfos</h2>
+                <ul class="list-group">
+                    <li class="list-group-item"><span class="u-text--bold">[{oxmultilang ident="SHIPPING_CARRIER"}]</span><span class="u-text--float-right">[{assign var="deliveryType" value=$order->getDelSet()}][{$deliveryType->oxdeliveryset__oxtitle->value}]</span></li>
+                    <li class="list-group-item"><span class="u-text--bold">[{oxmultilang ident="STATUS"}]</span>
+                       [{if $order->oxorder__oxstorno->value}]
+                            <span class="u-text--red u-text--float-right">[{oxmultilang ident="STATUS_CANCELED"}]</span>
+                        [{elseif $order->oxorder__oxsenddate->value !="-" }]
+                            <span class="u-text--green u-text--float-right">[{oxmultilang ident="STATUS_SHIPPED"}] [{$order->oxorder__oxsenddate->value|date_format:"%d.%m.%Y" }]</span>
+                        [{else}]
+                            <span class="u-text--orange u-text--float-right">[{oxmultilang ident="NOT_SHIPPED_YET"}]</span>
+                        [{/if }]
+                    </li>
+
+                    [{assign var="trackcodes" value=","|explode:$order->oxorder__oxtrackcode->value}]
+                    [{foreach from=$trackcodes item=trackcode name=tcodes}]
+                        [{if $trackcode}]
+                            <li class="list-group-item"><span class="u-text--bold">Paketnummer</span> <span class="u-text--float-right">[{$trackcode}]</span></li>
+                        [{/if}]
+                    [{/foreach}]
+                </ul>
+
+                <h2>Zahlungsinfos</h2>
+                <ul class="list-group">
+                    <li class="list-group-item"><span class="u-text--bold">Zahlungsart:</span><span class="u-text--float-right">[{$paymentType->oxpayments__oxdesc->value}]</span></li>
+                    <li class="list-group-item"><span class="u-text--bold">Bezahlt:</span>
+                        [{if $order->oxorder__oxpaid->value != "0000-00-00 00:00:00" }]
+                            <span class="u-text--float-right u-text--green">Bezahlt am: [{ $order->oxorder__oxpaid->value|date_format:"%d.%m.%Y" }]</span>
+                        [{else}]
+                            <span class="u-text--float-right u-text--red">Zahlung offen</span>
+                        [{/if }]
+                    </li>
+                    [{*}]
+                    url to pdf, not used atm. should be maybe merged with nice esr design.
+                    [{if $oView->getEsrUrl()}]
+                    <li class="list-group-item"><span class="u-text--bold u-text--float-left">Jetzt Bezahlen:</span>
+                        <a target="_blank" href="[{$oView->getEsrUrl()}]">Einzahlungsschein ansehen</a>
+
+                        [{$oView->getEsrRef()}]
+                    </li>
                     [{/if}]
-                [{/foreach}]
-            </ul>
-
-            <h2>Zahlungsinfos</h2>
-            <ul class="list-group">
-                <li class="list-group-item"><span class="u-text--bold">Zahlungsart:</span><span class="u-text--float-right">[{$paymentType->oxpayments__oxdesc->value}]</span></li>
-                <li class="list-group-item"><span class="u-text--bold">Bezahlt:</span>
-                    [{if $order->oxorder__oxpaid->value != "0000-00-00 00:00:00" }]
-                        <span class="u-text--float-right u-text--green">Bezahlt am: [{ $order->oxorder__oxpaid->value|date_format:"%d.%m.%Y" }]</span>
-                    [{else}]
-                        <span class="u-text--float-right u-text--red">Zahlung offen</span>
-                    [{/if }]
-                </li>
-                [{*}]
-                url to pdf, not used atm. should be maybe merged with nice esr design.
-                [{if $oView->getEsrUrl()}]
-                <li class="list-group-item"><span class="u-text--bold u-text--float-left">Jetzt Bezahlen:</span>
-                    <a target="_blank" href="[{$oView->getEsrUrl()}]">Einzahlungsschein ansehen</a>
-
-                    [{$oView->getEsrRef()}]
-                </li>
+                    [{*}]
+                </ul>
+                [{else}]
+                <h2>[{oxmultilang ident="STATUS_CANCELED"}]</h2>
                 [{/if}]
-                [{*}]
-            </ul>
-            [{else}]
-            <h2>[{oxmultilang ident="STATUS_CANCELED"}]</h2>
-            [{/if}]
+
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                    <div class="u-text--bold">Lieferadresse</div>
+                    <p>
+
+                    [{if $order->oxorder__oxdellname->value }]
+                        [{ $order->oxorder__oxdelcompany->getRawValue()}]<br />
+                        [{ $order->oxorder__oxdelfname->value}] [{ $order->oxorder__oxdellname->value}]<br />
+                        [{ $order->oxorder__oxdelstreet->value}] [{ $order->oxorder__oxdelstreetnr->value}]<br />
+                        [{ $order->oxorder__oxdelzip->value}] [{ $order->oxorder__oxdelcity->value }]<br />
+                        [{ $order->oxorder__oxdelcountry->getRawValue()}]<br />
+                        [{ $order->oxorder__oxdeladdinfo->value}]<br />
+                    [{else }]
+                        [{ $order->oxorder__oxbillcompany->getRawValue()}]<br />
+                        [{ $order->oxorder__oxbillfname->value}] [{ $order->oxorder__oxbilllname->value}]<br />
+                        [{ $order->oxorder__oxbillstreet->value}] [{ $order->oxorder__oxbillstreetnr->value}]<br />
+                        [{ $order->oxorder__oxbillzip->value}] [{ $order->oxorder__oxbillcity->value }]<br />
+                        [{ $order->oxorder__oxbillcountry->getRawValue()}]<br />
+                        [{ $order->oxorder__oxbilladdinfo->value}]<br />
+                    [{/if }]
+
+                    </p>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <div class="u-text--bold">Rechnungsadresse</div>
+                    <p>
+
+                    [{if $order->oxorder__oxbilllname->value }]
+
+                        [{ $order->oxorder__oxbillcompany->getRawValue()}]<br />
+                        [{ $order->oxorder__oxbillfname->value}] [{ $order->oxorder__oxbilllname->value}]<br />
+                        [{ $order->oxorder__oxbillstreet->value}] [{ $order->oxorder__oxbillstreetnr->value}]<br />
+                        [{ $order->oxorder__oxbillzip->value}] [{ $order->oxorder__oxbillcity->value }]<br />
+                        [{ $order->oxorder__oxbillcountry->getRawValue()}]<br />
+                        [{ $order->oxorder__oxbilladdinfo->value}]<br />
+                    [{/if }]
+
+                    </p>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-
-
-
-
-	</div>
-	<div class="col-sm-6">
-		<div class="row">
-			<div class="col-xs-12 col-sm-6">
-				<div class="u-text--bold">Lieferadresse</div>
-				<p>
-					
-				[{if $order->oxorder__oxdellname->value }]
-                    [{ $order->oxorder__oxdelcompany->getRawValue()}]<br />
-                    [{ $order->oxorder__oxdelfname->value}] [{ $order->oxorder__oxdellname->value}]<br />
-                    [{ $order->oxorder__oxdelstreet->value}] [{ $order->oxorder__oxdelstreetnr->value}]<br />
-                    [{ $order->oxorder__oxdelzip->value}] [{ $order->oxorder__oxdelcity->value }]<br />
-                    [{ $order->oxorder__oxdelcountry->getRawValue()}]<br />
-                    [{ $order->oxorder__oxdeladdinfo->value}]<br />
-                [{else }]
-                  	[{ $order->oxorder__oxbillcompany->getRawValue()}]<br />
-					[{ $order->oxorder__oxbillfname->value}] [{ $order->oxorder__oxbilllname->value}]<br />
-					[{ $order->oxorder__oxbillstreet->value}] [{ $order->oxorder__oxbillstreetnr->value}]<br />
-					[{ $order->oxorder__oxbillzip->value}] [{ $order->oxorder__oxbillcity->value }]<br />
-                    [{ $order->oxorder__oxbillcountry->getRawValue()}]<br />
-					[{ $order->oxorder__oxbilladdinfo->value}]<br />
-                [{/if }]
-				
-				</p>
-			</div>
-			<div class="col-xs-12 col-sm-6">
-				<div class="u-text--bold">Rechnungsadresse</div>
-				<p>
-				
-				[{if $order->oxorder__oxbilllname->value }]
-
-                  	[{ $order->oxorder__oxbillcompany->getRawValue()}]<br />
-					[{ $order->oxorder__oxbillfname->value}] [{ $order->oxorder__oxbilllname->value}]<br />
-					[{ $order->oxorder__oxbillstreet->value}] [{ $order->oxorder__oxbillstreetnr->value}]<br />
-					[{ $order->oxorder__oxbillzip->value}] [{ $order->oxorder__oxbillcity->value }]<br />
-                    [{ $order->oxorder__oxbillcountry->getRawValue()}]<br />
-					[{ $order->oxorder__oxbilladdinfo->value}]<br />
-                [{/if }]
-			
-				</p>
-			</div>
-			<div class="col-xs-12 col-sm-4">
-
-			</div>
-		</div>
-	</div>
-    <div class="col-xs-12">
-
-
-    [{if $smarty.get.esr == 1 }]
+    [{if $smarty.get.esr == 1 && $order->oxorder__oxpaid->value == "0000-00-00 00:00:00"}]
         <div class="c-esr payingslip esr">
             <div class="c-esr__heading u-12/12">
                 <span class="c-esr__borderbox u-1/3 u-text--center">Einzahlung Giro</span>
@@ -146,7 +143,7 @@
                     </div>
                     <div class="c-esr__caption">Konto/Compte/Conto</div>
                     <span class="u-text--block u-text--bold">[{$config->getConfigParam('sBankingAccount')}]</span>
-                    <div class="c-esr__numberbox c-esr__numberbox u-text--align-right">CHF 145.70</div>
+                    <div class="c-esr__numberbox c-esr__numberbox u-text--align-right">[{$order->oxorder__oxcurrency->value}] [{ $order->getFormattedTotalOrderSum() }]</div>
                     <div class="place-holder">&nbsp;</div>
                 </div>
                 <div class="c-esr__borderbox u-7/12">
@@ -176,91 +173,93 @@
                     </div>
                 </div>
             </div>
+            <div class="c-esr__codeline u-12/12">
+                [{$oView->getCodeLine()}]
+            </div>
         </div>
+
     [{/if}]
 
-    </div>
-    <div class="col-xs-12">
-        <div>
-        <h2>Bestellte Artikel</h2>
-            [{foreach from=$order->getOrderArticles() item=orderitem name=testOrderItem}]
 
-                [{assign var=sArticleId value=$orderitem->oxorderarticles__oxartid->value }]
-                [{assign var=oArticle value=$orderitem->getArticle() }]
+    <h2>Bestellte Artikel</h2>
+        [{foreach from=$order->getOrderArticles() item=orderitem name=testOrderItem}]
 
-                <div class="row u-m-b-15">
-                    <div class="col-sm-6">
+            [{assign var=sArticleId value=$orderitem->oxorderarticles__oxartid->value }]
+            [{assign var=oArticle value=$orderitem->getArticle() }]
 
-                        <div class="media">
-                            <div class="media-left u-p-r-15">
-                                [{if $oArticle->oxarticles__oxid->value && $oArticle->isVisible() }]<a href="[{$oArticle->getLink()}]">[{/if}]
-                                    <img class="media-object" src="[{$oArticle->getIconUrl() }]" >
-                                [{if $oArticle->oxarticles__oxid->value && $oArticle->isVisible() }]</a>[{/if}]
-                            </div>
-                            <div class="media-body">
-                                <div class="u-text--bold">[{$oArticle->getFirstTitleLine()}]</div>
-                                <div>[{$oArticle->getSecondTitleLine()}]</div>
-                                <div>[{$oArticle->getThirdTitleLine()}]</div>
-                                <div>[{$oArticle->oxarticles__oxartnum->value}]</div>
-                                [{if $orderitem->oxorderarticles__oxselvariant->value}]
-                                <div class="u-text--bold">Grösse: [{$orderitem->oxorderarticles__oxselvariant->value}]</div>
-                                [{/if}]
-                            </div>
+            <div class="row u-m-b-15">
+                <div class="col-sm-6">
+
+                    <div class="media">
+                        <div class="media-left u-p-r-15">
+                            [{if $oArticle->oxarticles__oxid->value && $oArticle->isVisible() }]<a href="[{$oArticle->getLink()}]">[{/if}]
+                                <img class="media-object" src="[{$oArticle->getIconUrl() }]" >
+                            [{if $oArticle->oxarticles__oxid->value && $oArticle->isVisible() }]</a>[{/if}]
                         </div>
-
+                        <div class="media-body">
+                            <div class="u-text--bold">[{$oArticle->getFirstTitleLine()}]</div>
+                            <div>[{$oArticle->getSecondTitleLine()}]</div>
+                            <div>[{$oArticle->getThirdTitleLine()}]</div>
+                            <div>[{$oArticle->oxarticles__oxartnum->value}]</div>
+                            [{if $orderitem->oxorderarticles__oxselvariant->value}]
+                            <div class="u-text--bold">Grösse: [{$orderitem->oxorderarticles__oxselvariant->value}]</div>
+                            [{/if}]
+                        </div>
                     </div>
-                    <div class="col-sm-6">
-                        <div class="clearfix">
-                            <div class="u-text--float-left">Anzahl: [{$orderitem->oxorderarticles__oxamount->value}]</div>
 
-                            <div class="u-text--float-right u-text--bold">[{$order->oxorder__oxcurrency->value}] [{$orderitem->getBrutPriceFormated()}]</div>
-                        </div>
-                        <div class="u-text--float-left">
-                            [{if $order->oxorder__oxstorno->value}]
-                                <span class="u-text--red">
-                                    [{oxmultilang ident="STATUS_CANCELED"}]
-                                </span>
-                            [{elseif $order->oxorder__oxsenddate->value !="-" }]
-                                <span class="u-text--green">
-                                    [{oxmultilang ident="STATUS_SHIPPED"}]
-                                </span>
-                            [{else}]
-                                [{if $oArticle->getStockStatus() == -1}]
+                </div>
+                <div class="col-sm-6">
+                    <div class="clearfix">
+                        <div class="u-text--float-left">Anzahl: [{$orderitem->oxorderarticles__oxamount->value}]</div>
 
-                                    [{if $oArticle->getDeliveryDate()}]
-                                        <span class="u-text--blue">
-                                            [{oxmultilang ident="AVAILABLE_ON"}] [{$oArticle->getDeliveryDate()}]
-                                        </span>
-                                    [{else}]
-                                        <span class="u-text--red">
-                                            [{if $oArticle->oxarticles__oxnostocktext->value}]
-                                                [{$oArticle->oxarticles__oxnostocktext->value}]
-                                            [{elseif $oViewConf->getStockOffDefaultMessage()}]
-                                                [{oxmultilang ident="MESSAGE_NOT_ON_STOCK"}]
-                                            [{/if}]
-                                        </span>
-                                    [{/if}]
-                                [{elseif $oArticle->getStockStatus() == 1}]
-                                    <span class="u-text--green">
-                                        [{*oxmultilang ident="LOW_STOCK"*}]
-                                        [{oxmultilang ident="READY_FOR_SHIPPING"}]
+                        <div class="u-text--float-right u-text--bold">[{$order->oxorder__oxcurrency->value}] [{$orderitem->getBrutPriceFormated()}]</div>
+                    </div>
+                    <div class="u-text--float-left">
+                        [{if $order->oxorder__oxstorno->value}]
+                            <span class="u-text--red">
+                                [{oxmultilang ident="STATUS_CANCELED"}]
+                            </span>
+                        [{elseif $order->oxorder__oxsenddate->value !="-" }]
+                            <span class="u-text--green">
+                                [{oxmultilang ident="STATUS_SHIPPED"}]
+                            </span>
+                        [{else}]
+                            [{if $oArticle->getStockStatus() == -1}]
+
+                                [{if $oArticle->getDeliveryDate()}]
+                                    <span class="u-text--blue">
+                                        [{oxmultilang ident="AVAILABLE_ON"}] [{$oArticle->getDeliveryDate()}]
                                     </span>
-                                [{elseif $oArticle->getStockStatus() == 0}]
-                                    <span class="u-text--green">
-                                        [{if $oArticle->oxarticles__oxstocktext->value}]
-                                            [{$oArticle->oxarticles__oxstocktext->value}]
-                                        [{elseif $oViewConf->getStockOnDefaultMessage()}]
-                                            [{oxmultilang ident="READY_FOR_SHIPPING"}]
+                                [{else}]
+                                    <span class="u-text--red">
+                                        [{if $oArticle->oxarticles__oxnostocktext->value}]
+                                            [{$oArticle->oxarticles__oxnostocktext->value}]
+                                        [{elseif $oViewConf->getStockOffDefaultMessage()}]
+                                            [{oxmultilang ident="MESSAGE_NOT_ON_STOCK"}]
                                         [{/if}]
                                     </span>
                                 [{/if}]
+                            [{elseif $oArticle->getStockStatus() == 1}]
+                                <span class="u-text--green">
+                                    [{*oxmultilang ident="LOW_STOCK"*}]
+                                    [{oxmultilang ident="READY_FOR_SHIPPING"}]
+                                </span>
+                            [{elseif $oArticle->getStockStatus() == 0}]
+                                <span class="u-text--green">
+                                    [{if $oArticle->oxarticles__oxstocktext->value}]
+                                        [{$oArticle->oxarticles__oxstocktext->value}]
+                                    [{elseif $oViewConf->getStockOnDefaultMessage()}]
+                                        [{oxmultilang ident="READY_FOR_SHIPPING"}]
+                                    [{/if}]
+                                </span>
                             [{/if}]
+                        [{/if}]
 
-                        </div>
                     </div>
                 </div>
-            [{/foreach}]
-        </div>
+            </div>
+        [{/foreach}]
+
         <div class="row u-m-b-15">
             <div class="col-sm-6 col-sm-offset-6">
                 <table border="0" cellspacing="0" cellpadding="0" class="pull-right u-12/12">
@@ -303,56 +302,55 @@
             </div>
         </div>
 
-
-
-    </div>
-
 </div>
-
+<h2>[{oxmultilang ident="MY_ORDER_HISTORY" suffix="COLON"}]</h2>
 [{/if}]
 
 
 [{block name="account_order_history"}]
 [{if count($oOrders) > 0}]
 
+
     <div class="c-order-history-list">
         [{foreach from=$oOrders item=order}]
         <div class="c-box c-box--grey [{if $order->oxorder__oxstorno->value}]storno[{/if}]">
 
             <div class="c-box__heading">Bestellung Nr. [{ $order->oxorder__oxordernr->value }]</div>
-            <div class="col-lg-3">
-                <div>
-                    <span class="u-text--bold">[{oxmultilang ident="ORDER_DATE" suffix="COLON"}]</span> <span class="u-text--float-right">[{ $order->oxorder__oxorderdate->value|date_format:"%d.%m.%Y" }]</span>
+            <div class="row">
+                <div class="col-lg-3">
+                    <div>
+                        <span class="u-text--bold">[{oxmultilang ident="ORDER_DATE" suffix="COLON"}]</span> <span class="u-text--float-right">[{ $order->oxorder__oxorderdate->value|date_format:"%d.%m.%Y" }]</span>
+                    </div>
+                    <div>
+                        <span class="u-text--bold">[{oxmultilang ident="GRAND_TOTAL" suffix="COLON"}]</span> <span class="u-text--float-right">[{$order->oxorder__oxcurrency->value}] [{ $order->getFormattedTotalOrderSum() }]</span>
+                    </div>
                 </div>
-                <div>
-                    <span class="u-text--bold">[{oxmultilang ident="GRAND_TOTAL" suffix="COLON"}]</span> <span class="u-text--float-right">[{$order->oxorder__oxcurrency->value}] [{ $order->getFormattedTotalOrderSum() }]</span>
-                </div>
-            </div>
-            <div class="col-lg-3 col-lg-offset-3">
-                <div>
-                    <span class="u-text--bold">[{oxmultilang ident="STATUS" suffix="COLON"}]</span>
-                    [{if $order->oxorder__oxstorno->value}]
-                        <span class="u-text--red u-text--float-right">[{oxmultilang ident="STATUS_CANCELED"}]</span>
-                    [{elseif $order->oxorder__oxsenddate->value !="-" }]
-                        <span class="u-text--green u-text--float-right">[{oxmultilang ident="STATUS_SHIPPED"}]</span>
-                    [{else}]
-                        <span class="u-text--orange u-text--float-right">[{oxmultilang ident="NOT_SHIPPED_YET"}]</span>
-                    [{/if}]
-                </div>
-                <div>
-                    [{if !$order->oxorder__oxstorno->value}]
-                        <span class="u-text--bold">[{oxmultilang ident="PAYMENT" suffix="COLON"}]</span>
-                        [{if $order->oxorder__oxpaid->value != "0000-00-00 00:00:00" }]
-                            <span class="u-text--green u-text--float-right">Bezahlt am: [{ $order->oxorder__oxpaid->value|date_format:"%d.%m.%Y" }]</span>
+                <div class="col-lg-3 col-lg-offset-3">
+                    <div>
+                        <span class="u-text--bold">[{oxmultilang ident="STATUS" suffix="COLON"}]</span>
+                        [{if $order->oxorder__oxstorno->value}]
+                            <span class="u-text--red u-text--float-right">[{oxmultilang ident="STATUS_CANCELED"}]</span>
+                        [{elseif $order->oxorder__oxsenddate->value !="-" }]
+                            <span class="u-text--green u-text--float-right">[{oxmultilang ident="STATUS_SHIPPED"}]</span>
                         [{else}]
-                            <span class="u-text--orange u-text--float-right">Zahlung offen</span>
+                            <span class="u-text--orange u-text--float-right">[{oxmultilang ident="NOT_SHIPPED_YET"}]</span>
                         [{/if}]
-                    [{/if}]
+                    </div>
+                    <div>
+                        [{if !$order->oxorder__oxstorno->value}]
+                            <span class="u-text--bold">[{oxmultilang ident="PAYMENT" suffix="COLON"}]</span>
+                            [{if $order->oxorder__oxpaid->value != "0000-00-00 00:00:00" }]
+                                <span class="u-text--green u-text--float-right">Bezahlt am: [{ $order->oxorder__oxpaid->value|date_format:"%d.%m.%Y" }]</span>
+                            [{else}]
+                                <span class="u-text--orange u-text--float-right">Zahlung offen</span>
+                            [{/if}]
+                        [{/if}]
+                    </div>
                 </div>
             </div>
-        	<div class="col-lg-12">
-                <a class="btn btn-default u-m-t-15" href="[{oxgetseourl ident=$oViewConf->getSelfLink()|cat:"cl=account_ordersingle" params="order="|cat:$order->oxorder__oxordernr->value}]" >Details zur Bestellung [{ $order->oxorder__oxordernr->value }] »</a>
-            </div>
+
+            <a class="btn btn-default u-m-t-15" href="[{oxgetseourl ident=$oViewConf->getSelfLink()|cat:"cl=account_ordersingle" params="order="|cat:$order->oxorder__oxordernr->value}]" >Details zur Bestellung [{ $order->oxorder__oxordernr->value }] »</a>
+
 
         </div>
         [{if  1==2}] 
