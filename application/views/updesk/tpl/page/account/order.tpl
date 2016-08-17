@@ -17,8 +17,8 @@
 
 [{if $order}]
 
-<div class="c-account-order">
-    <div class="c-account-order__ordernr">Bestelldetails Nr. [{ $order->oxorder__oxordernr->value }]</div>
+<div class="c-box c-box--grey">
+    <div class="c-box__heading">Bestelldetails Nr. [{ $order->oxorder__oxordernr->value }]</div>
 	<div class="col-sm-6">
 
             <p>
@@ -317,9 +317,9 @@
 
     <div class="c-order-history-list">
         [{foreach from=$oOrders item=order}]
-        <div class="c-account-order [{if $order->oxorder__oxstorno->value}]storno[{/if}]">
+        <div class="c-box c-box--grey [{if $order->oxorder__oxstorno->value}]storno[{/if}]">
 
-            <div class="c-account-order__ordernr">Bestellung Nr. [{ $order->oxorder__oxordernr->value }]</div>
+            <div class="c-box__heading">Bestellung Nr. [{ $order->oxorder__oxordernr->value }]</div>
             <div class="col-lg-3">
                 <div>
                     <span class="u-text--bold">[{oxmultilang ident="ORDER_DATE" suffix="COLON"}]</span> <span class="u-text--float-right">[{ $order->oxorder__oxorderdate->value|date_format:"%d.%m.%Y" }]</span>
