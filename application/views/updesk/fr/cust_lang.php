@@ -39,7 +39,7 @@ $aLang = array(
     'ALL_ITEMS_FROM'                        => 'Alle Artikel von',
     'ALL_ITEMS_IN_CATS'                     => 'Alle Artikel in der Kategorie',
     'BRANDS'                                => 'Marques',
-    'FROM_lc' => 'de',
+    'FROM_lc'                               => 'de',
     'oxtitleDirectionAsc'                   => 'titre de A - Z',
     'oxtitleDirectionDesc'                  => 'titre de Z - A',
     'oxvarminpriceDirectionAsc'             => 'a partier du prix le plus bas',
@@ -48,7 +48,9 @@ $aLang = array(
     'oxinsertDirectionDesc'                 => 'plus récents en premier',
 
     'SUBTOTAL'                              => 'total',
-
+    'PAYMENT'                               => 'Paiement',
+    'STATUS_SHIPPED'                        => 'expédiés',
+    'STATUS_CANCELED'                       => 'annulé',
     'CHECKOUT_USER_ALREADY_CUSTOMER'        => 'Je suis déjà client',
     'CHECKOUT_USER_ALREADY_CUSTOMER_INFO'   => 'Entres tes identifiants pour te connecter à ton compte urbanpeople.com',
     'CHECKOUT_USER_NEW_CUSTOMER'            => 'Je suis un nouveau client',

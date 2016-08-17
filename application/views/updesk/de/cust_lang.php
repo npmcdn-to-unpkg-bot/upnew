@@ -48,7 +48,9 @@ $aLang = array(
     'oxinsertDirectionDesc'             => 'Neuste zuerst',
 
     'SUBTOTAL'                          => 'Zwischensumme',
-
+    'PAYMENT'                           => 'Zahlung',
+    'STATUS_SHIPPED'                    => 'Versendet',
+    'STATUS_CANCELED'                   => 'Storniert',
     'CHECKOUT_USER_ALREADY_CUSTOMER'     => 'Ich bin bereits Kunde',
     'CHECKOUT_USER_ALREADY_CUSTOMER_INFO'=> 'Bitte melde dich mit Deiner E-Mail-Adresse und Deinem Passwort hier an.',
     'CHECKOUT_USER_NEW_CUSTOMER'         => 'Ich bin Neukunde',

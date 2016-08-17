@@ -17,7 +17,7 @@
 
 [{if $order}]
 
-<div class="c-account-order border-box">
+<div class="c-account-order">
     <div class="c-account-order__ordernr">Bestelldetails Nr. [{ $order->oxorder__oxordernr->value }]</div>
 	<div class="col-sm-6">
 
@@ -25,36 +25,36 @@
                 <span class="u-text--bold">[{oxmultilang ident="ORDER_DATE"}]</span> [{ $order->oxorder__oxorderdate->value|date_format:"%d.%m.%Y %H:%M:%S" }]<br>
                 <span class="u-text--bold">Letzte Anpassung</span> [{ $order->oxorder__oxtimestamp->value|date_format:"%d.%m.%Y %H:%M:%S" }]
             </p>
-
+            [{if !$order->oxorder__oxstorno->value}]
             <h2>Versandinfos</h2>
             <ul class="list-group">
-                <li class="list-group-item"><span class="u-text--bold u-text--float-left">Versandart</span><span class="u-text--float-right">[{assign var="deliveryType" value=$order->getDelSet()}][{$deliveryType->oxdeliveryset__oxtitle->value}]</span></li>
-                <li class="list-group-item"><span class="u-text--bold u-text--float-left">Versendet/Abgeholt</span>
+                <li class="list-group-item"><span class="u-text--bold">[{oxmultilang ident="SHIPPING_CARRIER"}]</span><span class="u-text--float-right">[{assign var="deliveryType" value=$order->getDelSet()}][{$deliveryType->oxdeliveryset__oxtitle->value}]</span></li>
+                <li class="list-group-item"><span class="u-text--bold">[{oxmultilang ident="STATUS"}]</span>
                    [{if $order->oxorder__oxstorno->value}]
-                        <span class="u-text--danger u-text--float-right">[{oxmultilang ident="ORDER_IS_CANCELED"}]</span>
+                        <span class="u-text--red u-text--float-right">[{oxmultilang ident="STATUS_CANCELED"}]</span>
                     [{elseif $order->oxorder__oxsenddate->value !="-" }]
-                        <span class="u-text--danger u-text--float-right">[{oxmultilang ident="SHIPPED"}] [{$order->oxorder__oxsenddate->value|date_format:"%d.%m.%Y" }]</span>
+                        <span class="u-text--green u-text--float-right">[{oxmultilang ident="STATUS_SHIPPED"}] [{$order->oxorder__oxsenddate->value|date_format:"%d.%m.%Y" }]</span>
                     [{else}]
-                        <span class="u-text--danger u-text--float-right">[{oxmultilang ident="NOT_SHIPPED_YET"}]</span>
+                        <span class="u-text--orange u-text--float-right">[{oxmultilang ident="NOT_SHIPPED_YET"}]</span>
                     [{/if }]
                 </li>
 
                 [{assign var="trackcodes" value=","|explode:$order->oxorder__oxtrackcode->value}]
                 [{foreach from=$trackcodes item=trackcode name=tcodes}]
                     [{if $trackcode}]
-                        <li class="list-group-item"><span class="u-text--bold u-text--float-left">Paketnummer</span>[{$trackcode}]</li>
+                        <li class="list-group-item"><span class="u-text--bold">Paketnummer</span> <span class="u-text--float-right">[{$trackcode}]</span></li>
                     [{/if}]
                 [{/foreach}]
             </ul>
 
             <h2>Zahlungsinfos</h2>
             <ul class="list-group">
-                <li class="list-group-item"><span class="u-text--bold u-text--float-left">Zahlungsart:</span><span class="u-text--float-right">[{$paymentType->oxpayments__oxdesc->value}]</span></li>
-                <li class="list-group-item"><span class="u-text--bold u-text--float-left">Bezahlt:</span>
+                <li class="list-group-item"><span class="u-text--bold">Zahlungsart:</span><span class="u-text--float-right">[{$paymentType->oxpayments__oxdesc->value}]</span></li>
+                <li class="list-group-item"><span class="u-text--bold">Bezahlt:</span>
                     [{if $order->oxorder__oxpaid->value != "0000-00-00 00:00:00" }]
-                        <span class="u-text--float-right">Bezahlt am: [{ $order->oxorder__oxpaid->value|date_format:"%d.%m.%Y" }]</span>
+                        <span class="u-text--float-right u-text--green">Bezahlt am: [{ $order->oxorder__oxpaid->value|date_format:"%d.%m.%Y" }]</span>
                     [{else}]
-                        <span class="u-text--float-right">Zahlung offen</span>
+                        <span class="u-text--float-right u-text--red">Zahlung offen</span>
                     [{/if }]
                 </li>
                 [{*}]
@@ -68,6 +68,10 @@
                 [{/if}]
                 [{*}]
             </ul>
+            [{else}]
+            <h2>[{oxmultilang ident="STATUS_CANCELED"}]</h2>
+            [{/if}]
+
 
 
 
@@ -214,11 +218,11 @@
                         <div class="u-text--float-left">
                             [{if $order->oxorder__oxstorno->value}]
                                 <span class="u-text--red">
-                                    [{oxmultilang ident="ORDER_IS_CANCELED"}]
+                                    [{oxmultilang ident="STATUS_CANCELED"}]
                                 </span>
                             [{elseif $order->oxorder__oxsenddate->value !="-" }]
                                 <span class="u-text--green">
-                                    [{oxmultilang ident="SHIPPED"}]
+                                    [{oxmultilang ident="STATUS_SHIPPED"}]
                                 </span>
                             [{else}]
                                 [{if $oArticle->getStockStatus() == -1}]
@@ -316,36 +320,36 @@
         <div class="c-account-order [{if $order->oxorder__oxstorno->value}]storno[{/if}]">
 
             <div class="c-account-order__ordernr">Bestellung Nr. [{ $order->oxorder__oxordernr->value }]</div>
-            <div class="col-lg-6">
+            <div class="col-lg-3">
                 <div>
-                    <strong>[{oxmultilang ident="ORDER_DATE"}]</strong> [{ $order->oxorder__oxorderdate->value|date_format:"%d.%m.%Y" }]
+                    <span class="u-text--bold">[{oxmultilang ident="ORDER_DATE" suffix="COLON"}]</span> <span class="u-text--float-right">[{ $order->oxorder__oxorderdate->value|date_format:"%d.%m.%Y" }]</span>
                 </div>
                 <div>
-                    <strong>Betrag</strong> [{$order->oxorder__oxcurrency->value}] [{ $order->getFormattedTotalOrderSum() }]
+                    <span class="u-text--bold">[{oxmultilang ident="GRAND_TOTAL" suffix="COLON"}]</span> <span class="u-text--float-right">[{$order->oxorder__oxcurrency->value}] [{ $order->getFormattedTotalOrderSum() }]</span>
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-3 col-lg-offset-3">
                 <div>
-                    <strong>[{oxmultilang ident="STATUS"}]</strong>
+                    <span class="u-text--bold">[{oxmultilang ident="STATUS" suffix="COLON"}]</span>
                     [{if $order->oxorder__oxstorno->value}]
-                        <span class="u-text--warning">[{oxmultilang ident="ORDER_IS_CANCELED"}]</span>
+                        <span class="u-text--red u-text--float-right">[{oxmultilang ident="STATUS_CANCELED"}]</span>
                     [{elseif $order->oxorder__oxsenddate->value !="-" }]
-                        <span class="u-text--success">[{oxmultilang ident="SHIPPED"}]</span>
+                        <span class="u-text--green u-text--float-right">[{oxmultilang ident="STATUS_SHIPPED"}]</span>
                     [{else}]
-                        <span class="u-text--alert">[{oxmultilang ident="NOT_SHIPPED_YET"}]</span>
+                        <span class="u-text--orange u-text--float-right">[{oxmultilang ident="NOT_SHIPPED_YET"}]</span>
                     [{/if}]
                 </div>
                 <div>
-                    <strong>Zahlung:</strong>
-                    [{if $order->oxorder__oxpaid->value != "0000-00-00 00:00:00" }]
-                        <span class="done">Bezahlt am: [{ $order->oxorder__oxpaid->value|date_format:"%d.%m.%Y" }]</span>
-                    [{else}]
-                        <span class="note">Zahlung offen</span>
-                    [{/if }]
+                    [{if !$order->oxorder__oxstorno->value}]
+                        <span class="u-text--bold">[{oxmultilang ident="PAYMENT" suffix="COLON"}]</span>
+                        [{if $order->oxorder__oxpaid->value != "0000-00-00 00:00:00" }]
+                            <span class="u-text--green u-text--float-right">Bezahlt am: [{ $order->oxorder__oxpaid->value|date_format:"%d.%m.%Y" }]</span>
+                        [{else}]
+                            <span class="u-text--orange u-text--float-right">Zahlung offen</span>
+                        [{/if}]
+                    [{/if}]
                 </div>
             </div>
-         
-
         	<div class="col-lg-12">
                 <a class="btn btn-default u-m-t-15" href="[{oxgetseourl ident=$oViewConf->getSelfLink()|cat:"cl=account_ordersingle" params="order="|cat:$order->oxorder__oxordernr->value}]" >Details zur Bestellung [{ $order->oxorder__oxordernr->value }] »</a>
             </div>

@@ -48,7 +48,9 @@ $aLang = array(
     'oxinsertDirectionDesc'             => 'newest first',
 
     'SUBTOTAL'                          => 'Subtotal',
-
+    'PAYMENT'                           => 'Payment',
+    'STATUS_SHIPPED'                    => 'Shipped',
+    'STATUS_CANCELED'                   => 'Canceled',
     'CHECKOUT_USER_ALREADY_CUSTOMER'      => 'I\'m already a customer',
     'CHECKOUT_USER_ALREADY_CUSTOMER_INFO' => 'Please login with your email address and your password',
     'CHECKOUT_USER_NEW_CUSTOMER'          => 'I\'m a new customer',

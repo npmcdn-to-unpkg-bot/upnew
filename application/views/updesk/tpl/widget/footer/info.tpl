@@ -9,6 +9,6 @@
             [{/if}]
         [{/foreach}]
         [{*<li><a href="[{ oxgetseourl ident=$oViewConf->getSelfLink()|cat:"cl=newsletter" }]" rel="nofollow">[{ oxmultilang ident="NEWSLETTER" }]</a></li>*}]
-        <li><a href="https://www.urbanpeople.com/newsletter-phplist/?p=subscribe&id=3" rel="nofollow">[{ oxmultilang ident="NEWSLETTER" }]</a></li>
+        [{ oxcontent ident=footer_information_links }]
     </ul>
 [{/block}]
