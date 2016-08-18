@@ -237,11 +237,9 @@
                                     [{foreach key=sShipID from=$oView->getAllSets() item=oShippingSet name=ShipSetSelect}]
                                         [{assign var=sShippingName value=$oShippingSet->oxdeliveryset__oxtitle->value}]
                                         <div class="option [{if $oShippingSet->blSelected}]selected[{/if}]" data-selection-id="[{$sShipID}]">
-                                          
-
                                              <input id="payment_[{$sShipID}]" type="radio" name="sShipSet" value="[{$sShipID}]" [{if $oShippingSet->blSelected}]checked="checked"[{/if}] />
                                            <div>
-                                                <span class="title">[{$sShippingName}]</span>
+                                                <span class="u-text--bold u-m-l-30">[{$sShippingName}]</span>
                                                 [{*}]<span class="desc">[{$oShippingSet->oxdeliveryset__jxdesc->getRawValue()}]</span>[{*}]
                                                 <img class="icon"/>
                                             </div>
@@ -311,7 +309,7 @@
                                         <div class="option  [{if $oView->getCheckedPaymentId() == $paymentmethod->oxpayments__oxid->value}]selected[{/if}]" data-paytitle="[{$sPaymentName}]" data-paycost="[{$paymentmethod->oxpayments__oxaddsum->value}]">
                                              <input id="payment_[{$sPaymentID}]" type="radio" name="paymentid" value="[{$sPaymentID}]" [{if $oView->getCheckedPaymentId() == $paymentmethod->oxpayments__oxid->value}]checked="checked"[{/if}] />
                                        
-                                            <div class="title">[{$sPaymentName}] [{oxprice price=$paymentmethod->getPrice() currency=$currency}] <div class="payment-tooltip glyphicon glyphicon-info-sign" data-powertip="[{$paymentmethod->oxpayments__oxlongdesc->getRawValue()}]"></div></div>
+                                            <div class="u-text--bold u-m-l-30">[{$sPaymentName}] [{oxprice price=$paymentmethod->getPrice() currency=$currency}] <div class="payment-tooltip glyphicon glyphicon-info-sign" data-powertip="[{$paymentmethod->oxpayments__oxlongdesc->getRawValue()}]"></div></div>
                                                  [{oxscript add="$('.payment-tooltip').powerTip( { placement: 's', mouseOnToPopup: true  } );"  }]
                                            [{assign var="imgurl" value="payments/de/$sPaymentID.png"}]
                                          
@@ -332,7 +330,7 @@
                                                 [{else}]
                                                     [{include file="page/checkout/inc/payment_other.tpl"}]
                                                 [{/if}]
-                                            [{/block}]
+                                             [{/block}]
                                             </div>
                                         </div> 
                                         
