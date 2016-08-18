@@ -23,3 +23,38 @@
   font-weight: 500;
   position: relative;
 }
+
+//depracted checkout-section
+.checkout-section {
+  border: 1px solid @palette-Grey-200;
+  padding:15px 25px;
+  background:@palette-Grey-100;
+  margin-bottom:30px;
+  h3.section-heading {
+    margin: 5px -1px 15px;
+    font-size: 17px;
+    font-weight: 500;
+    //background: @palette-Grey-50;
+    position:relative;
+    .btn.pull-right {
+      background:white;
+      border:1px solid @palette-Grey-400;
+      padding:5px 10px;
+      padding: 0 10px;
+
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+    }
+  }
+  dl{
+    margin-bottom:0;
+  }
+  &.block-order-basket {
+    border-bottom:none;
+    margin-bottom:0;
+    padding:0;
+
+  }
+}

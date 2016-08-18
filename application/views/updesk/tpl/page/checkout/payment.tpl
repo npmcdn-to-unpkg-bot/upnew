@@ -212,8 +212,8 @@
        
          [{block name="change_shipping"}]
         <div class="col-lg-5">
-            <div class="checkout-section">
-                <h3 class="section-heading">[{oxmultilang ident="SHIPPING"}]</h3>
+            <div class="c-box c-box--grey">
+                <h3 class="c-box__title">[{oxmultilang ident="SHIPPING"}]</h3>
                 [{if $oView->getAllSets()}]
                     [{assign var="aErrors" value=$oView->getFieldValidationErrors()}]
                     <form action="[{$oViewConf->getSslSelfLink()}]" name="shipping" id="shipping" method="post">
@@ -284,8 +284,8 @@
 
          [{block name="change_payment"}]
          <div class="col-lg-7">
-            <div class="checkout-section">
-                <h3 class="section-heading">[{oxmultilang ident="PAYMENT_METHOD"}]</h3>
+            <div class="c-box c-box--grey">
+                <h3 class="c-box__title">[{oxmultilang ident="PAYMENT_METHOD"}]</h3>
                 [{oxscript include="js/widgets/oxinputvalidator.js" priority=10}]
                 [{oxscript add="$('form.js-oxValidate').oxInputValidator();"}]
                 <form action="[{$oViewConf->getSslSelfLink()}]" class="js-oxValidate payment" id="payment" name="order" method="post">
@@ -374,16 +374,16 @@
     [{/block}]
     </div>
     
-     [{block name="checkout_payment_nextstep"}]
-                            <div class="checkout-next bottom-line">
-                                [{if $oxcmp_basket->isBelowMinOrderPrice()}]
-                                    <b>[{oxmultilang ident="MIN_ORDER_PRICE"}] [{oxprice price=$oxcmp_basket->getMinOrderPrice() currency=$currency}]</b>
-                                [{else}]
-                        <input type="submit" id="paymentNextStepBottom" class="btn btn-checkout-guide" name="userform" value="[{oxmultilang ident="CONTINUE_TO_NEXT_STEP"}]" />
-                        <hr>
-                        <input type="button" class="btn previous btn-xs" id="paymentBackStepBottom" value="[{oxmultilang ident="PREVIOUS_STEP"}]" onclick="window.open('[{oxgetseourl ident=$oViewConf->getOrderLink()}]', '_self');" />  
-                                [{/if}]
-                            </div>
+    [{block name="checkout_payment_nextstep"}]
+    <div class="c-box c-box--grey">
+        [{if $oxcmp_basket->isBelowMinOrderPrice()}]
+            <b>[{oxmultilang ident="MIN_ORDER_PRICE"}] [{oxprice price=$oxcmp_basket->getMinOrderPrice() currency=$currency}]</b>
+        [{else}]
+            <input type="submit" id="paymentNextStepBottom" class="btn btn-checkout-guide" name="userform" value="[{oxmultilang ident="CONTINUE_TO_NEXT_STEP"}]" />
+            <hr>
+            <input type="button" class="btn previous btn-xs" id="paymentBackStepBottom" value="[{oxmultilang ident="PREVIOUS_STEP"}]" onclick="window.open('[{oxgetseourl ident=$oViewConf->getOrderLink()}]', '_self');" />
+        [{/if}]
+    </div>
     [{/block}]
     [{insert name="oxid_tracker" title=$template_title}]
 

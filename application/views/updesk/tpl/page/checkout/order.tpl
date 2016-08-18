@@ -31,7 +31,7 @@
                             
                            
                             [{if $oView->showOrderButtonOnTop() }]
-                            <div id="orderAgbTop" class="checkout-section resp-lg-hidden">
+                            <div id="orderAgbTop" class="c-box c-box--grey resp-lg-hidden">
                                 <form action="[{$oViewConf->getSslSelfLink()}]" method="post" id="orderConfirmAgbTop">
                                     [{$oViewConf->getHiddenSid()}]
                                     [{$oViewConf->getNavFormParams()}]
@@ -74,14 +74,14 @@
                     *}]
 
                     [{block name="checkout_order_address"}]
-                        <div id="orderAddress" class="checkout-section">
+                        <div id="orderAddress" class="c-box c-box--grey">
                             <form class="form" action="[{$oViewConf->getSslSelfLink()}]" method="post">
-                                <h3 class="heading section-heading">
+                                <h3 class="c-box__title">
                                     <span>[{oxmultilang ident="ADDRESSES"}]</span>
                                     [{$oViewConf->getHiddenSid()}]
                                     <input type="hidden" name="cl" value="user">
                                     <input type="hidden" name="fnc" value="">
-                                    <button type="submit" class="btn btn-xs pull-right">[{oxmultilang ident="EDIT"}]</button>
+                                    <button type="submit" class="btn btn-default btn-xs pull-right">[{oxmultilang ident="EDIT"}]</button>
                                 </h3>
                             </form>
                             <div class="row">
@@ -117,14 +117,14 @@
                     [{block name="shippingAndPayment"}]
                     <div class="row">
                         <div class="col-lg-6">
-                            <div id="orderShipping" class="checkout-section">
+                            <div id="orderShipping" class="c-box c-box--grey">
                                 <form action="[{$oViewConf->getSslSelfLink()}]" class="form" method="post">
-                                    <h3 class="heading section-heading">
+                                    <h3 class="c-box__title">
                                         <span>[{oxmultilang ident="SHIPPING_CARRIER"}]</span>
                                         [{$oViewConf->getHiddenSid()}]
                                         <input type="hidden" name="cl" value="payment">
                                         <input type="hidden" name="fnc" value="">
-                                        <button type="submit" class="btn btn-xs pull-right">[{oxmultilang ident="EDIT"}]</button>
+                                        <button type="submit" class="btn btn-default btn-xs pull-right">[{oxmultilang ident="EDIT"}]</button>
                                     </h3>
                                 </form>
                                 [{assign var="oShipSet" value=$oView->getShipSet() }]
@@ -132,14 +132,14 @@
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <div id="orderPayment" class="checkout-section">
+                            <div id="orderPayment" class="c-box c-box--grey">
                                 <form action="[{$oViewConf->getSslSelfLink()}]" class="form" method="post">
-                                    <h3 class="heading section-heading">
+                                    <h3 class="c-box__title">
                                         <span>[{oxmultilang ident="PAYMENT_METHOD"}]</span>
                                         [{$oViewConf->getHiddenSid()}]
                                         <input type="hidden" name="cl" value="payment">
                                         <input type="hidden" name="fnc" value="">
-                                        <button type="submit" class="btn btn-xs pull-right">[{oxmultilang ident="EDIT"}]</button>
+                                        <button type="submit" class="btn btn-default btn-xs pull-right">[{oxmultilang ident="EDIT"}]</button>
                                     </h3>
                                 </form>
                                 [{assign var="payment" value=$oView->getPayment() }]
@@ -150,19 +150,19 @@
                     [{/block}]
                  
                  
-                    <div id="orderEditCart" class="checkout-section resp-lg-hidden">
+                    <div id="orderEditCart" class="c-box c-box--grey resp-lg-hidden">
                         <form action="[{$oViewConf->getSslSelfLink()}]" class="form" method="post">
-                            <h3 class="heading section-heading">
+                            <h3 class="c-box__title">
                                 <span>[{oxmultilang ident="CART"}]</span>
                                 [{$oViewConf->getHiddenSid()}]
                                 <input type="hidden" name="cl" value="basket">
                                 <input type="hidden" name="fnc" value="">
-                                <button type="submit" class="btn btn-xs pull-right">[{oxmultilang ident="EDIT"}]</button>
+                                <button type="submit" class="btn btn-default btn-xs pull-right">[{oxmultilang ident="EDIT"}]</button>
                             </h3>
                         </form>
                         [{block name="order_basket"}]
                         <div id="orderBasketSummary">   
-                                    [{include file="page/checkout/inc/basketcontents.tpl" editable=false}]
+                            [{include file="page/checkout/inc/basketcontents.tpl" editable=false}]
                         </div>     
                         [{/block}]
                     </div>
@@ -174,7 +174,7 @@
                             [{/block}]
                         [{else}]
                             [{block name="checkout_order_btn_confirm_bottom"}]
-                                <form action="[{$oViewConf->getSslSelfLink()}]" method="post" id="orderConfirmAgbBottom" class="checkout-next bottom-line">
+                                <form action="[{$oViewConf->getSslSelfLink()}]" method="post" id="orderConfirmAgbBottom" class="c-box c-box--grey">
                                     [{$oViewConf->getHiddenSid()}]
                                     [{$oViewConf->getNavFormParams()}]
                                     <input type="hidden" name="cl" value="order">
