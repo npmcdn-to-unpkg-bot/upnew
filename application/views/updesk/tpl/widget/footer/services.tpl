@@ -1,12 +1,12 @@
 [{block name="footer_services"}]
     <div class="h4">[{oxmultilang ident="SERVICES" }]</div>
-    <ul class="list-content-links">
+    <ul class="c-list">
         [{block name="footer_services_items"}]
-            <li>
+            <li class="c-list__item">
                 <a href="[{ oxgetseourl ident=$oViewConf->getSelfLink()|cat:"cl=contact" }]">[{ oxmultilang ident="CONTACT" }]</a>
             </li>
-            <li><a id="forgotPasswordLink" href="[{oxgetseourl ident=$oViewConf->getSelfLink()|cat:"cl=forgotpwd"}]" class="textLink" rel="nofollow">[{oxmultilang ident="FORGOT_PASSWORD"}]</a></li>
-            <li><a id="openAccountLink" href="[{oxgetseourl ident=$oViewConf->getSslSelfLink()|cat:"cl=register"}]" class="textLink" rel="nofollow">[{oxmultilang ident="OPEN_ACCOUNT"}]</a></li>
+            <li class="c-list__item"><a id="forgotPasswordLink" href="[{oxgetseourl ident=$oViewConf->getSelfLink()|cat:"cl=forgotpwd"}]" class="textLink" rel="nofollow">[{oxmultilang ident="FORGOT_PASSWORD"}]</a></li>
+            <li class="c-list__item"><a id="openAccountLink" href="[{oxgetseourl ident=$oViewConf->getSslSelfLink()|cat:"cl=register"}]" class="textLink" rel="nofollow">[{oxmultilang ident="OPEN_ACCOUNT"}]</a></li>
             [{*[{if $oViewConf->getHelpPageLink() }]
                 <li><a href="[{ $oViewConf->getHelpPageLink() }]">[{ oxmultilang ident="HELP" }]</a></li>
             [{/if}]
@@ -23,11 +23,9 @@
                        rel="nofollow">[{ oxmultilang ident="INVITE_YOUR_FRIENDS" }]</a></li>
             [{/if}]*}]
             [{oxhasrights ident="TOBASKET"}]
-                <li><a href="[{ oxgetseourl ident=$oViewConf->getBasketLink() }]"
-                       rel="nofollow">[{ oxmultilang ident="CART" }]</a></li>
+            <li class="c-list__item"><a href="[{ oxgetseourl ident=$oViewConf->getBasketLink() }]" rel="nofollow">[{ oxmultilang ident="CART" }]</a></li>
             [{/oxhasrights}]
-            <li><a href="[{ oxgetseourl ident=$oViewConf->getSelfLink()|cat:"cl=account" }]"
-                   rel="nofollow">[{ oxmultilang ident="ACCOUNT" }]</a></li>
+            <li class="c-list__item"><a href="[{ oxgetseourl ident=$oViewConf->getSelfLink()|cat:"cl=account" }]" rel="nofollow">[{ oxmultilang ident="ACCOUNT" }]</a></li>
             [{*<li><a href="[{ oxgetseourl ident=$oViewConf->getSelfLink()|cat:"cl=account_noticelist" }]"
                    rel="nofollow">[{ oxmultilang ident="WISH_LIST" }]</a></li>
             [{if $oViewConf->getShowWishlist()}]

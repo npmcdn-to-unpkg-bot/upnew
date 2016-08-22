@@ -16,13 +16,7 @@
         [{include file="layout/togglenav.tpl"}]
         
     </div> *}]
-    
-     
-  
 
-
-
- 
     
 [{block name="algolia"}]
       
@@ -294,13 +288,13 @@
   
     <div id="canvas-center">
         <div id="canvas-blocker"></div>
-          [{if $oView->getClassName() ne "start" && !$blHideBreadcrumb}]
+        [{if $oView->getClassName() ne "start" && !$blHideBreadcrumb}]
          
-          <div class="container breadCrumb-container">
+            <div class="container breadCrumb-container">
             [{block name="layout_breadcrumb"}]
                [{ include file="widget/breadcrumb.tpl"}]
             [{/block}]
-        </div>
+            </div>
         [{/if}]
       
         <div id="page">
@@ -310,6 +304,13 @@
                 [{/if}]
                 [{include file="message/errors.tpl"}]
                 <div class="row">
+                [{if $sidebar}]
+                    <div id="sidebar">
+                        [{foreach from=$oxidBlock_sidebar item="_block"}]
+                        [{$_block}]
+                        [{/foreach}]
+                    </div>
+                [{/if}]
                 [{foreach from=$oxidBlock_content item="_block"}]
                     [{$_block}]
                 [{/foreach}]

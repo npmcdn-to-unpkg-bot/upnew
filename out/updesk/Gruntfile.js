@@ -34,7 +34,8 @@ grunt.initConfig({
       },
       build: {
         files: {
-          'src/css/upnew.min.css': 'src/less/upnew.less'
+            'src/css/upnew.min.css': 'src/less/upnew.less',
+            'src/css/bootstrap.min.css': 'src/less/bootstrap/bootstrap.less',
         }
       }
     },
