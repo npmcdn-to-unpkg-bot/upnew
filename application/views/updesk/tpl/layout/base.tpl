@@ -110,26 +110,19 @@
     <link rel="shortcut icon" href="[{$oViewConf->getImageUrl('favicon.ico')}]">
 
     [{block name="base_style"}]
-      
-       
+
+        <!-- Latest styles -->
+        <link href='//fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
+        [{oxstyle include="css/bootstrap.min.css"}]
+        [{oxstyle include="css/upnew.min.css"}]
+
+        [{oxstyle include="css/libs/slick.css"}]
+        [{oxstyle include="css/libs/slick-theme.css"}]
+        [{oxstyle include="css/libs/magnific-popup.css"}]
+
+        [{oxstyle include="css/libs/jquery.powertip.min.css"}]
+
     [{/block}]
-   
-         <!-- Latest compiled and minified CSS -->
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-<link href='//fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
-
-    
-    
- 
-     [{oxstyle include="css/upnew.min.css"}]
-
-  
-[{oxstyle include="css/libs/slick.css"}]
-[{oxstyle include="css/libs/slick-theme.css"}]
-[{oxstyle include="css/libs/magnific-popup.css"}]
-
-[{oxstyle include="css/libs/jquery.powertip.min.css"}]
 
  
     [{assign var='rsslinks' value=$oView->getRssLinks() }]

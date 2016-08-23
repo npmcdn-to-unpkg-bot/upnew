@@ -11,6 +11,7 @@
 /application/views/*
 !/application/views/updesk/
 #!/application/views/updesk/*
+!/application/views/upmob/
 
 
 !/out
