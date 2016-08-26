@@ -28,8 +28,6 @@
                                 <div>[{oxmultilang ident="MIN_ORDER_PRICE"}] [{oxprice price=$oxcmp_basket->getMinOrderPrice() currency=$currency}]</div>
                             [{/block}]
                         [{else}]
-                            
-                           
                             [{if $oView->showOrderButtonOnTop() }]
                             <div id="orderAgbTop" class="c-box c-box--grey resp-lg-hidden">
                                 <form action="[{$oViewConf->getSslSelfLink()}]" method="post" id="orderConfirmAgbTop">
@@ -41,12 +39,10 @@
                                     <input type="hidden" name="sDeliveryAddressMD5" value="[{$oView->getDeliveryAddressMD5()}]">
 
                                         [{include file="page/checkout/inc/agb.tpl"}]
-
-                                       
-                                           <button type="submit" class="btn btn-checkout-guide">[{oxmultilang ident="SUBMIT_ORDER"}]</button>
-                                            [{*<input type="button" class="btn previous" value="[{oxmultilang ident="PREVIOUS_STEP"}]" onclick="window.open('[{oxgetseourl ident=$oViewConf->getPaymentLink()}]', '_self');" />*}]
+                                        <button type="submit" class="btn btn-checkout-guide">[{oxmultilang ident="SUBMIT_ORDER"}]</button>
+                                        [{*<input type="button" class="btn previous" value="[{oxmultilang ident="PREVIOUS_STEP"}]" onclick="window.open('[{oxgetseourl ident=$oViewConf->getPaymentLink()}]', '_self');" />*}]
                                         
-                                    </form>
+                                </form>
                                 </div>
                             [{/if}]
                     
@@ -190,7 +186,7 @@
                                         [{ include file="page/checkout/inc/agb.tpl" }]
                                     [{/if}]
 
-                                  <button type="submit" class="btn btn-checkout-guide">[{oxmultilang ident="SUBMIT_ORDER"}]</button>
+                                    <button type="submit" class="btn btn-checkout-guide">[{oxmultilang ident="SUBMIT_ORDER"}]</button>
                                    
                                      [{*    <hr>
                                     <input type="button" class="btn previous" value="[{oxmultilang ident="PREVIOUS_STEP"}]" onclick="window.open('[{oxgetseourl ident=$oViewConf->getPaymentLink()}]', '_self');" />  *}]

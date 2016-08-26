@@ -307,19 +307,18 @@
                                         [{block name="select_payment_dropdown"}]
                                         [{assign var=sPaymentName value=$paymentmethod->oxpayments__oxdesc->value}]
                                         <div class="option  [{if $oView->getCheckedPaymentId() == $paymentmethod->oxpayments__oxid->value}]selected[{/if}]" data-paytitle="[{$sPaymentName}]" data-paycost="[{$paymentmethod->oxpayments__oxaddsum->value}]">
-                                             <input id="payment_[{$sPaymentID}]" type="radio" name="paymentid" value="[{$sPaymentID}]" [{if $oView->getCheckedPaymentId() == $paymentmethod->oxpayments__oxid->value}]checked="checked"[{/if}] />
-                                       
-                                            <div class="u-text--bold u-m-l-30">[{$sPaymentName}] [{oxprice price=$paymentmethod->getPrice() currency=$currency}] <div class="payment-tooltip glyphicon glyphicon-info-sign" data-powertip="[{$paymentmethod->oxpayments__oxlongdesc->getRawValue()}]"></div></div>
-                                                 [{oxscript add="$('.payment-tooltip').powerTip( { placement: 's', mouseOnToPopup: true  } );"  }]
-                                           [{assign var="imgurl" value="payments/de/$sPaymentID.png"}]
-                                         
+                                            <input id="payment_[{$sPaymentID}]" type="radio" name="paymentid" value="[{$sPaymentID}]" [{if $oView->getCheckedPaymentId() == $paymentmethod->oxpayments__oxid->value}]checked[{/if}]>
+
+                                            <div class="u-text--bold u-m-l-30">[{$sPaymentName}] [{oxprice price=$paymentmethod->getPrice() currency=$currency}]</div>
+
+                                            [{assign var="imgurl" value="payments/de/$sPaymentID.png"}]
                                             [{if $oViewConf->getImageUrl($imgurl)}]
                                                 <img class="payment-icon" src="[{$oViewConf->getImageUrl($imgurl)}]" />
                                             [{/if}]
                                                
-                                               [{*<span class="selected-check glyphicon glyphicon-ok"></span>*}]
+                                            [{*<span class="selected-check glyphicon glyphicon-ok"></span>*}]
                                            
-                                            <div class="desc">
+                                             <div class="desc">
                                              [{block name="select_payment"}]
                                                 [{if $sPaymentID == "oxidcashondel"}]
                                                     [{include file="page/checkout/inc/payment_oxidcashondel.tpl"}]
@@ -331,7 +330,7 @@
                                                     [{include file="page/checkout/inc/payment_other.tpl"}]
                                                 [{/if}]
                                              [{/block}]
-                                            </div>
+                                             </div>
                                         </div> 
                                         
                                         [{if $oView->getCheckedPaymentId() == $paymentmethod->oxpayments__oxid->value}]
@@ -341,9 +340,6 @@
                                     [{/foreach}]
                                 </div>
                             </div>
-
-                           
-                          
                         [{/block}]
 
                      

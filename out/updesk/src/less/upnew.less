@@ -1359,6 +1359,7 @@ ul.minibasketitems {
 }
 
 .payship .option {
+  opacity:1.0;
   margin:15px 0;
   padding:15px 0;
   background-color:white;
@@ -1391,11 +1392,8 @@ ul.minibasketitems {
   .desc{
     display:none;
     margin: 10px;
-    background:@palette-Grey-100;
     font-size:smaller;
-    position: relative;
     dl{
-     
       padding:20px;
     }
     dt label{
@@ -1403,7 +1401,7 @@ ul.minibasketitems {
       margin-top: 3px;
     }
     dd{
-      display:none;
+      //display:none;
       &.activePayment{
         display:block;
         
@@ -1460,10 +1458,10 @@ ul.minibasketitems {
     border: 1px solid @palette-Grey-500;
     border-radius:2px;
    .box-shadow(0 2px 0 rgba(0, 0, 0, 0.06));
-    height:auto;
+
     &:focus{
       border-color: @palette-Grey-900;
-       .box-shadow(0 0 4px 2px rgba(0, 0, 0, 0.1));
+      .box-shadow(0 0 4px 2px rgba(0, 0, 0, 0.1));
     }
   }
 
