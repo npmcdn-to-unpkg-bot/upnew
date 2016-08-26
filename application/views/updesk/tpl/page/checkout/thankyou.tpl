@@ -47,7 +47,7 @@
 
             [{ assign var="aVouchers" value=$order->getVoucherNrList() }]
             <img src="https://[{$oView->getActiveLangAbbr()}].profity.ch/imp/?s=211&amp;b=6&amp;lp=1&amp;ordervalue=[{ $order->getFormattedTotalOrderSum() }]&amp;ordernumber=[{ $order->oxorder__oxordernr->value }]&amp;vouchercode=[{ $aVouchers.0}]">
-            <img src="https://www.getback.ch/app/tracking/x1rlS/checkout/?ordervalue=[{ $order->getFormattedTotalOrderSum() }]&amp;ordernumber=[{ $order->oxorder__oxordernr->value }]&amp;vouchercode=[{ $aVouchers.0}]" alt="" width="1" height="1">
+            <script async src="https://www.getback.ch/app/tracking/x1rlS/conversion/?ordervalue=[{ $order->getFormattedTotalOrderSum() }]&ordernumber=[{ $order->oxorder__oxordernr->value }]&vouchercode=[{ $aVouchers.0}]"></script>
             <div class="media">
                 <div class="media-left">
                     <a href="https://[{$oView->getActiveLangAbbr()}].profity.ch/clk/?lpk=1036686A0E089B9C7736A07FABDDFC7D3096476C" target="_blank">
